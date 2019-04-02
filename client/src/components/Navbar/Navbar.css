@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto|Varela+Round");
+
+.navbar {
+  background-color: transparent !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  z-index: 3;
+  position: fixed !important;
+  width: 100%;
+  top: 0px;
+  padding: 0em !important;
+}
+
+.navbar-brand{
+  font-family: 'Raleway';
+  font-weight: bold;
+  color: #771313;
+  margin-left: 1em;
+  vertical-align: middle;
+  padding-top: 0.4em
+}
+
+
+.dropdown-menu show {
+  padding: 2em;
+  /* position: relative !important; */
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+#navbarNavDropdown {
+  padding-right: 1em;
+}
+.nav-item {
+  line-height: 4em;
+}
+
+.active {
+  color: orange !important;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  flex-grow: 3;
+  height: 100%;
+  flex-direction: row;
+  justify-content: flex-end;
+  vertical-align: center;
+  /* margin-top: 0.1em; */
+}
+
+.navbar-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li.nav-item {
+  /* display: inline; */
+  font-size: 15px;
+  /* text-align: center; */
+  vertical-align: center;
+  padding: 0px 0px 0px 30px !important;
+  text-decoration: none !important;
+  margin: 0;
+  color: black;
+}
+
+h2.logo {
+  margin: 0 8px;
+  font-family: 'Raleway';
+}
+
+.middle {
+  font-family:  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  color: rgb(72, 72, 72) !important;
+  font-size: 14px !important;
+  line-height: 18px !important;
+  letter-spacing: normal !important;
+  cursor: pointer !important;
+  height: 48px !important;
+  width: 300px !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  border: 0.5px solid lightgrey !important;
+  box-shadow: -0.5px 2px 8px 0.2px rgba(0, 0, 0, 0.1);
+  border-radius: 4px !important;
+  padding: 1px 8px !important;
+  overflow: hidden !important;
+  position: relative;
+  right: -1em;
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+  align-self: auto;
+  flex-grow: 3;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.top {
+  /* margin-top: 5em; */
+}
+
+
