@@ -82,7 +82,7 @@ class SignIn extends Component {
                             </div>
                         </form>
                         {this.state.success && (
-                            <Redirect to={{pathname: '/journal'}} />
+                            <Redirect to={{pathname: '/'}} />
                         )}
                     </div> {/* end of modal dialog */}
                 </div> {/* end of form */}

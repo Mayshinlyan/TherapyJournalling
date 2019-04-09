@@ -13,7 +13,7 @@ function About(props) {
   return (
     <div>
       <Navbar />
-      <h1>Therapy Journalling</h1>
+      <h1>The Team</h1>
       <Footer />
     </div>
   );
