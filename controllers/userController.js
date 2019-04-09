@@ -209,7 +209,7 @@ userController.loginAuthentication = passport.authenticate('local', {
 userController.logout = (req, res) => {
     req.logout();
     req.flash('success_msg', 'You are logged out.');
-    res.redirect('/api/allPosts');
+    res.redirect('/');
 };
 
 module.exports = userController;

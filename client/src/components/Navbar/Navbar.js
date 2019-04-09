@@ -82,6 +82,11 @@ class Navbar extends Component {
               Journal
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/feedback" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
+              Feedback
+            </NavLink>
+          </li>
           {this.state.user ? (
             <li className='nav-item'>
                 <NavLink className='nav-link' to={`/profile/${this.state.user.username}`}>
@@ -93,9 +98,9 @@ class Navbar extends Component {
           )}
           {this.state.user ? (
             <li className='nav-item'>
-                <a className='nav-link' onClick={this.loggedOut} to="/">
+                <NavLink className='nav-link' onClick={this.loggedOut} to="/">
                     Logout
-                </a>
+                </NavLink>
             </li>
           ) : (
             <li className='nav-item'>

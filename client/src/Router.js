@@ -9,7 +9,8 @@ import About from "./pages/About/About";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Profile from './pages/Profile/Profile';
-import Journal from './pages/Profile/Profile';
+import Journal from './pages/Journal/Journal';
+import Feedback from './pages/Feedback/Feedback';
 
 class Routes extends Component {
 
@@ -62,6 +63,7 @@ class Routes extends Component {
                     <Route exact path="/signin" component={SignIn} />
                     <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/journal" component={Journal} />
+                    <Route exact path="/feedback" component={Feedback} />
                     <Route exact path='/profile/:username' render={(props) => (
                         this.state.user ? (
                             <Profile user={this.state.user} {...props} />
