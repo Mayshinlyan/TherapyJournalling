@@ -25,15 +25,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mayshinlyan/BridgeBurma.git"
+    "url": "git+https://github.com/Mayshinlyan/TherapyJournalling.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Mayshinlyan/BridgeBurma/issues"
+    "url": "https://github.com/Mayshinlyan/TherapyJournalling/issues"
   },
-  "homepage": "https://github.com/Mayshinlyan/BridgeBurma#readme",
+  "homepage": "https://github.com/Mayshinlyan/TherapyJournalling#readme",
   "devDependencies": {
     "eslint": "^5.7.0",
     "jest": "^23.6.0"

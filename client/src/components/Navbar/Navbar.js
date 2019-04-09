@@ -78,7 +78,7 @@ class Navbar extends Component {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/forum" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
+            <NavLink className="nav-link" to="/journal" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
               Journal
             </NavLink>
           </li>

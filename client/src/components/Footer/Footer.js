@@ -8,7 +8,7 @@ class Footer extends Component {
     return (
       <footer id="myFooter">
         <div className="footer-copyright">
-            <p className="mt-2">© Copyright TherapyJournal</p>
+            <p className="">© Copyright TherapyJournal</p>
         </div>
     </footer>
     );
