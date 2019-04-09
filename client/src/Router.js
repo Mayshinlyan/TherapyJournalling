@@ -58,7 +58,7 @@ class Routes extends Component {
             <BrowserRouter>
 
                 <Switch>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/home" component={Home} />
                     <Route exact path="/about" component = {About} />
                     <Route exact path="/signin" component={SignIn} />
                     <Route exact path="/signup" component={SignUp} />
@@ -68,7 +68,7 @@ class Routes extends Component {
                         this.state.user ? (
                             <Profile user={this.state.user} {...props} />
                         ) : (
-                                <Redirect to='/' />
+                                <Redirect to='/home' />
                             )
                     )} />
                 </Switch>
