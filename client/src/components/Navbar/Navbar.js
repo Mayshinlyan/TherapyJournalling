@@ -68,9 +68,9 @@ class Navbar extends Component {
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav ml-auto">
           <li className = "nav-item">
-            <NavLink className="nav-link" to="/home" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
+            <a className="nav-link" href="/">
               Home
-            </NavLink>
+            </a>
           </li>
           <li className = "nav-item">
             <NavLink className="nav-link" to="/about" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
