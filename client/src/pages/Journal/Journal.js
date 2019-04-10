@@ -1,42 +1,218 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { NavLink, Link, Redirect } from "react-router-dom";
+import "./Journal.css";
 import axios from 'axios';
-import './Journal.css';
+import logo from "../../components/Navbar/logo.svg"
 import Navbar from '../../components/Navbar/Navbar';
-import Utility from '../../Utility';
-
+import SignUp from "../SignUp/SignUp";
+import Footer from "../../components/Footer/Footer";
+import './Journal.css'
 
 class Journal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+			exercise: false,
+            nap: false,
+            coffee: false,
+            sun: false,
+            computer: false,
+			user: null,
+            username: '',
+			_jtext: '',
+            password: '',
+            success: null,
+            response: null,
+			email: '',
+			name: ''
         }
+        this.submitJournal = this.submitJournal.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     componentWillMount() {
         this.setState({
-
+            user: this.props.user,
+            username: this.props.user.username
         });
     }
 
+	submitJournal(e) {
+		e.preventDefault();
+		const {user, username, _jtext}  = this.state;
+        axios.post('/api/submitJournal', { username, _jtext })
+		.then(function(response) {
+				console.log("response:", response.data);
+				// TODO: tell user the journal is submitted; redirect somewhere
+			}).catch(error => {
+				console.log(error);
+				// TODO: handle error
+			});
+	}
+	handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+      }
 
-    render() {
+	handleChange(e) {
+		var t = document.getElementById('form-text').value;
+		this.setState({
+			_jtext: t
+		});
+	}
 
-        return (
-
-        <div className="Top">
-              <Navbar />
-               <div style={{marginTop: '4.7em'}} className='container'>
-
-                    <div className='jumbotron'>
-                    <h1>Journal Entries</h1>
+	render() {
+		return (
+			<div>
+				<Navbar />
+				<h1>Therapy Journalling</h1>
+				<form onSubmit={this.submitJournal}>
+				<h2>How were your mood levels today?</h2>
+          <div className="slidecontainer">
+                <input 
+                  type="range" 
+                  min="1" 
+                  max="100" 
+                  className="slider1" 
+                  id="happySlide"
+                  onChange={this.handleInputChange}
+                  value={this.state.value} 
+                //   onChange={this.handleChange}
+                /> 
+          </div>
+          <div className="slidecontainer">
+                <input 
+                  type="range" 
+                  min="1" 
+                  max="100" 
+                  className="slider1" 
+                  id="stressSlide"
+                  onChange={this.handleInputChange}
+                  value={this.state.value} 
+                //   onChange={this.handleChange}
+                  /> 
+          </div>
+         <div className="slidecontainer">
+                <input 
+                  type="range" 
+                  min="1" 
+                  max="100" 
+                  className="slider1" 
+                  id="angrySlide"
+                  onChange={this.handleInputChange}
+                  value={this.state.value} 
+                //   onChange={this.handleChange}
+                  /> 
+          </div>
+        <h2> How did you sleep?</h2>
+        <div className="slidecontainer">
+                <input 
+                  type="range" 
+                  min="1" 
+                  max="100" 
+                  className="slider1" 
+                  id="sleepSlide"
+                  onChange={this.handleInputChange}
+                  value={this.state.value} 
+                //   onChange={this.handleChange}
+                  /> 
+          </div>
+          <ul>
+                <li>
+                    <div className="container">
+                        <input 
+                          type="checkbox" 
+                          name="exercise" 
+                          value="exercise" 
+                          id="exercise"
+                          checked={this.state.exercise}
+                          onChange={this.handleInputChange}/>
+                         <label htmlFor="exercise"><img src="images/runicon1.png"/></label>
+                        <div className="overlay">
+                         <div className="text"> Exercise</div>
+                        </div>
                     </div>
-                </div>
-
-        </div>
-
-        );
-    }
+                </li>
+            <li>
+                    <div className="container">
+                        <input 
+                          type="checkbox" 
+                          name="nap" 
+                          value="nap" 
+                          id="nap"
+                          checked={this.state.nap}
+                          onChange={this.handleInputChange}/>
+                         <label htmlFor="nap"><img src="images/sleepicon1.png"/></label>
+                        <div className="overlay">
+                         <div className="text"> nap</div>
+                        </div>
+                    </div>
+                </li>
+            <li>
+                    <div className="container">
+                        <input 
+                          type="checkbox" 
+                          name="coffee" 
+                          value="coffee" 
+                          id="coffee"
+                          checked={this.state.coffee}
+                          onChange={this.handleInputChange}/>
+                         <label htmlFor="coffee"><img src="images/coffeeicon1.png"/></label>
+                        <div className="overlay">
+                         <div className="text"> coffee</div>
+                        </div>
+                    </div>
+                </li>
+            <li>
+                    <div className="container">
+                        <input 
+                          type="checkbox" 
+                          name="sun" 
+                          value="sun" 
+                          id="sun"
+                          checked={this.state.sun}
+                          onChange={this.handleInputChange}/>
+                         <label htmlFor="sun"><img src="images/sunicon1.png"/></label>
+                        <div className="overlay">
+                         <div className="text"> outdoors</div>
+                        </div>
+                    </div>
+                </li>
+              <li>
+                    <div className="container">
+                        <input 
+                          type="checkbox" 
+                          name="computer" 
+                          value="computer" 
+                          id="computer"
+                          checked={this.state.computer}
+                          onChange={this.handleInputChange}/>
+                         <label htmlFor="computer"><img src="images/computericon1.png"/></label>
+                        <div className="overlay">
+                         <div className="text"> Computer</div>
+                        </div>
+                    </div>
+                </li>
+          </ul>
+					<div>
+						<textarea autoFocus rows="4" cols="50" name="jtext" id="form-text" 
+							onChange={this.handleChange}/>
+					</div>
+					<div>
+					<button type="submit" className="btn btn-dark w-100">Submit</button>
+					</div>
+				</form>
+				<Footer />
+			</div>
+		);
+	}
 }
+
 
 export default Journal;
