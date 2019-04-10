@@ -6,6 +6,7 @@ const { check, validationResult } = require('express-validator/check');
 
 // Import controllers
 const userController = require('../controllers/userController');
+const journalController = require('../controllers/journalController');
 
 // Checks if user is authenticated
 ensureAuthenticated = (req, res, next) => {
@@ -28,6 +29,7 @@ ensureAuthenticated = (req, res, next) => {
     app.post('/register', userController.createNewUser);
     app.post('/updateUser', ensureAuthenticated, userController.updateUser);
     app.post('/login', userController.loginAuthentication);
+    app.post('/submitJournal', journalController.submitJournal);
 
 
     module.exports = app;

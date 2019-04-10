@@ -15,6 +15,7 @@ mongoose.connect(keys.mongoURI, () => {
   console.log('Connected to MongoDB.');
 }, {useNewUrlParser: true});
 require('./models/User.js');
+require('./models/Journal.js');
 
 // Import router.js
 const router = require('./routes/router');

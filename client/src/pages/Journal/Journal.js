@@ -54,7 +54,7 @@ class Journal extends Component {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-    
+
         this.setState({
           [name]: value
         });
@@ -75,61 +75,61 @@ class Journal extends Component {
 				<form onSubmit={this.submitJournal}>
 				<h2>How were your mood levels today?</h2>
           <div className="slidecontainer">
-                <input 
-                  type="range" 
-                  min="1" 
-                  max="100" 
-                  className="slider1" 
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  className="slider1"
                   id="happySlide"
                   onChange={this.handleInputChange}
-                  value={this.state.value} 
+                  value={this.state.value}
                 //   onChange={this.handleChange}
-                /> 
+                />
           </div>
           <div className="slidecontainer">
-                <input 
-                  type="range" 
-                  min="1" 
-                  max="100" 
-                  className="slider1" 
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  className="slider1"
                   id="stressSlide"
                   onChange={this.handleInputChange}
-                  value={this.state.value} 
+                  value={this.state.value}
                 //   onChange={this.handleChange}
-                  /> 
+                  />
           </div>
          <div className="slidecontainer">
-                <input 
-                  type="range" 
-                  min="1" 
-                  max="100" 
-                  className="slider1" 
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  className="slider1"
                   id="angrySlide"
                   onChange={this.handleInputChange}
-                  value={this.state.value} 
+                  value={this.state.value}
                 //   onChange={this.handleChange}
-                  /> 
+                  />
           </div>
         <h2> How did you sleep?</h2>
         <div className="slidecontainer">
-                <input 
-                  type="range" 
-                  min="1" 
-                  max="100" 
-                  className="slider1" 
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  className="slider1"
                   id="sleepSlide"
                   onChange={this.handleInputChange}
-                  value={this.state.value} 
+                  value={this.state.value}
                 //   onChange={this.handleChange}
-                  /> 
+                  />
           </div>
           <ul>
                 <li>
                     <div className="container">
-                        <input 
-                          type="checkbox" 
-                          name="exercise" 
-                          value="exercise" 
+                        <input
+                          type="checkbox"
+                          name="exercise"
+                          value="exercise"
                           id="exercise"
                           checked={this.state.exercise}
                           onChange={this.handleInputChange}/>
@@ -141,10 +141,10 @@ class Journal extends Component {
                 </li>
             <li>
                     <div className="container">
-                        <input 
-                          type="checkbox" 
-                          name="nap" 
-                          value="nap" 
+                        <input
+                          type="checkbox"
+                          name="nap"
+                          value="nap"
                           id="nap"
                           checked={this.state.nap}
                           onChange={this.handleInputChange}/>
@@ -156,10 +156,10 @@ class Journal extends Component {
                 </li>
             <li>
                     <div className="container">
-                        <input 
-                          type="checkbox" 
-                          name="coffee" 
-                          value="coffee" 
+                        <input
+                          type="checkbox"
+                          name="coffee"
+                          value="coffee"
                           id="coffee"
                           checked={this.state.coffee}
                           onChange={this.handleInputChange}/>
@@ -171,10 +171,10 @@ class Journal extends Component {
                 </li>
             <li>
                     <div className="container">
-                        <input 
-                          type="checkbox" 
-                          name="sun" 
-                          value="sun" 
+                        <input
+                          type="checkbox"
+                          name="sun"
+                          value="sun"
                           id="sun"
                           checked={this.state.sun}
                           onChange={this.handleInputChange}/>
@@ -186,10 +186,10 @@ class Journal extends Component {
                 </li>
               <li>
                     <div className="container">
-                        <input 
-                          type="checkbox" 
-                          name="computer" 
-                          value="computer" 
+                        <input
+                          type="checkbox"
+                          name="computer"
+                          value="computer"
                           id="computer"
                           checked={this.state.computer}
                           onChange={this.handleInputChange}/>
@@ -201,7 +201,7 @@ class Journal extends Component {
                 </li>
           </ul>
 					<div>
-						<textarea autoFocus rows="4" cols="50" name="jtext" id="form-text" 
+						<textarea autoFocus rows="4" cols="50" name="jtext" id="form-text"
 							onChange={this.handleChange}/>
 					</div>
 					<div>
