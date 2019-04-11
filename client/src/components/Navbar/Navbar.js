@@ -67,9 +67,9 @@ class Navbar extends Component {
 
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav ml-auto">
-          <li className = "nav-item">
+          <li className="nav-item">
             <a className="nav-link" href="/">
-              Home
+              Home <span className="sr-only"></span>
             </a>
           </li>
           <li className = "nav-item">
@@ -80,11 +80,6 @@ class Navbar extends Component {
           <li className="nav-item">
             <NavLink className="nav-link" to="/journal" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
               Journal
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/feedback" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
-              Feedback
             </NavLink>
           </li>
           {this.state.user ? (
@@ -98,9 +93,9 @@ class Navbar extends Component {
           )}
           {this.state.user ? (
             <li className='nav-item'>
-                <NavLink className='nav-link' onClick={this.loggedOut} to="/">
+                <a className='nav-link' onClick={this.loggedOut} to="/">
                     Logout
-                </NavLink>
+                </a>
             </li>
           ) : (
             <li className='nav-item'>
