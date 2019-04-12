@@ -20,6 +20,10 @@ class Journal extends Component {
 			user: null,
             username: '',
 			_jtext: '',
+			happiness: 50,
+			angriness: 50,
+			stressValue: 50,
+			sleepValue: 50,
             password: '',
             success: null,
             response: null,
@@ -40,8 +44,8 @@ class Journal extends Component {
 
 	submitJournal(e) {
 		e.preventDefault();
-		const {user, username, _jtext, exercise, nap, coffee, sun, computer}  = this.state;
-        axios.post('/api/submitJournal', { username, _jtext, exercise, nap, coffee, sun, computer })
+		const {user, username, _jtext, happiness, angriness, stressValue, sleepValue, exercise, nap, coffee, sun, computer}  = this.state;
+        axios.post('/api/submitJournal', { username, _jtext, happiness, angriness, stressValue, sleepValue, exercise, nap, coffee, sun, computer })
 		.then(function(response) {
 				console.log("response:", response.data);
 				// TODO: tell user the journal is submitted; redirect somewhere
@@ -82,6 +86,7 @@ class Journal extends Component {
                   max="100"
                   className="slider1"
                   id="happySlide"
+                  name="happiness"
                   onChange={this.handleInputChange}
                   value={this.state.value}
                 //   onChange={this.handleChange}
@@ -94,6 +99,7 @@ class Journal extends Component {
                   max="100"
                   className="slider1"
                   id="stressSlide"
+                  name="stressValue"
                   onChange={this.handleInputChange}
                   value={this.state.value}
                 //   onChange={this.handleChange}
@@ -106,6 +112,7 @@ class Journal extends Component {
                   max="100"
                   className="slider1"
                   id="angrySlide"
+                  name="angriness"
                   onChange={this.handleInputChange}
                   value={this.state.value}
                 //   onChange={this.handleChange}
@@ -119,6 +126,7 @@ class Journal extends Component {
                   max="100"
                   className="slider1"
                   id="sleepSlide"
+                  name="sleepValue"
                   onChange={this.handleInputChange}
                   value={this.state.value}
                 //   onChange={this.handleChange}
@@ -202,8 +210,14 @@ class Journal extends Component {
                 </li>
           </ul>
 					<div>
-						<textarea autoFocus rows="4" cols="50" name="jtext" id="form-text"
-							onChange={this.handleChange}/>
+						<textarea
+							autoFocus
+							rows="4"
+							cols="50"
+							name="_jtext"
+							id="_jtext"
+							value={this.state.value}
+							onChange={this.handleInputChange}/>
 					</div>
 					<div>
 					<button type="submit" className="btn btn-dark w-100">Submit</button>

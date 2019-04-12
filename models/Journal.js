@@ -20,6 +20,22 @@ const journalSchema = new Schema({
 		type: String,
 		required: true
 	},
+	happiness: {
+		type: Number,
+		required: true
+	},
+	angriness: {
+		type: Number,
+		required: true
+	},
+	stressValue: {
+		type: Number,
+		required: true
+	},
+	sleepValue: {
+		type: Number,
+		required: true
+	},
 	isDeleted: {
 		type: Boolean,
 		default: false
