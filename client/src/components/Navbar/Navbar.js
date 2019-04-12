@@ -82,6 +82,11 @@ class Navbar extends Component {
               Journal
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/pastjournals" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
+              Past Journals
+            </NavLink>
+          </li>
           {this.state.user ? (
             <li className='nav-item'>
                 <NavLink className='nav-link' to={`/profile/${this.state.user.username}`}>

@@ -30,6 +30,7 @@ ensureAuthenticated = (req, res, next) => {
     app.post('/updateUser', ensureAuthenticated, userController.updateUser);
     app.post('/login', userController.loginAuthentication);
     app.post('/submitJournal', journalController.submitJournal);
+    app.post('/getJournals', journalController.getJournals);
 
 
     module.exports = app;

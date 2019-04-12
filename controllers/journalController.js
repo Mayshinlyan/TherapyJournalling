@@ -24,4 +24,20 @@ journalController.submitJournal = (req, res) => {
 	});
 };
 
+journalController.getJournals = (req, res) => {
+	const { username } = req.body;
+
+	models.Journal.find({
+		username: username
+	}, (err, journals) => {
+		if (err) {
+			return console.error(err);	
+		} 
+		return res.status(200).json({
+			success:true,
+			journals: journals
+		})
+	})
+};
+
 module.exports = journalController;

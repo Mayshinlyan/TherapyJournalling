@@ -6,32 +6,32 @@ import logo from "../../components/Navbar/logo.svg"
 import Navbar from '../../components/Navbar/Navbar';
 import SignUp from "../SignUp/SignUp";
 import Footer from "../../components/Footer/Footer";
-import './Journal.css'
 
 class Journal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-			exercise: false,
+			      exercise: false,
             nap: false,
             coffee: false,
             sun: false,
             computer: false,
-			user: null,
+			      user: null,
             username: '',
-			_jtext: '',
-			happiness: 50,
-			angriness: 50,
-			stressValue: 50,
-			sleepValue: 50,
+            _jtext: '',
+            happiness: 50,
+            angriness: 50,
+            stressValue: 50,
+            sleepValue: 50,
             password: '',
             success: null,
             response: null,
-			email: '',
-			name: ''
+            email: '',
+            name: '',
+            journals: [1, 2, 3]
         }
         this.submitJournal = this.submitJournal.bind(this);
-		this.handleInputChange = this.handleInputChange.bind(this);
+		    this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     componentWillMount() {
@@ -40,6 +40,7 @@ class Journal extends Component {
             username: this.props.user.username
         });
     }
+
 
 	submitJournal(e) {
 		e.preventDefault();
@@ -68,7 +69,7 @@ class Journal extends Component {
 		return (
 			<div>
 				<Navbar />
-				<h1>Therapy Journalling</h1>
+				<h1>Therapy Journaling</h1>
 				<form onSubmit={this.submitJournal}>
 				<h2>How were your mood levels today?</h2>
           <div className="slidecontainer">
@@ -81,7 +82,6 @@ class Journal extends Component {
                   name="happiness"
                   onChange={this.handleInputChange}
                   value={this.state.value}
-                //   onChange={this.handleChange}
                 />
           </div>
           <div className="slidecontainer">
@@ -94,7 +94,6 @@ class Journal extends Component {
                   name="stressValue"
                   onChange={this.handleInputChange}
                   value={this.state.value}
-                //   onChange={this.handleChange}
                   />
           </div>
          <div className="slidecontainer">
@@ -107,7 +106,6 @@ class Journal extends Component {
                   name="angriness"
                   onChange={this.handleInputChange}
                   value={this.state.value}
-                //   onChange={this.handleChange}
                   />
           </div>
         <h2> How did you sleep?</h2>
@@ -121,7 +119,6 @@ class Journal extends Component {
                   name="sleepValue"
                   onChange={this.handleInputChange}
                   value={this.state.value}
-                //   onChange={this.handleChange}
                   />
           </div>
           <ul>
