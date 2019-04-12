@@ -31,7 +31,6 @@ class Journal extends Component {
 			name: ''
         }
         this.submitJournal = this.submitJournal.bind(this);
-		this.handleChange = this.handleChange.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
     }
 
@@ -64,13 +63,6 @@ class Journal extends Component {
           [name]: value
         });
       }
-
-	handleChange(e) {
-		var t = document.getElementById('form-text').value;
-		this.setState({
-			_jtext: t
-		});
-	}
 
 	render() {
 		return (
