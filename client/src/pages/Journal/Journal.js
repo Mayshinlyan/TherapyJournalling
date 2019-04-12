@@ -40,8 +40,8 @@ class Journal extends Component {
 
 	submitJournal(e) {
 		e.preventDefault();
-		const {user, username, _jtext}  = this.state;
-        axios.post('/api/submitJournal', { username, _jtext })
+		const {user, username, _jtext, exercise, nap, coffee, sun, computer}  = this.state;
+        axios.post('/api/submitJournal', { username, _jtext, exercise, nap, coffee, sun, computer })
 		.then(function(response) {
 				console.log("response:", response.data);
 				// TODO: tell user the journal is submitted; redirect somewhere
@@ -50,6 +50,7 @@ class Journal extends Component {
 				// TODO: handle error
 			});
 	}
+
 	handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
