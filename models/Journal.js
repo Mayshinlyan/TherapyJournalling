@@ -27,12 +27,28 @@ const journalSchema = new Schema({
 	createdAt: {
 		type: Date,
 		default: Date.now
+	},
+	exercise: {
+		type: Boolean,
+		defaul: false
+	},
+	nap: {
+		type: Boolean,
+		defaul: false
+	},
+	coffee: {
+		type: Boolean,
+		defaul: false
+	}, 
+	sun: {
+		type: Boolean,
+		defaul: false
+	}, 
+	computer: {
+		type: Boolean,
+		defaul: false
 	}
 });
-
-journalSchema.methods.printJournal = function () {
-	console.log("printing the journal: ", this.journalText);
-}
 
 var Journal = mongoose.model('Journal', journalSchema);
 module.exports = Journal;
