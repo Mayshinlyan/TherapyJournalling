@@ -8,18 +8,8 @@ class PastJournals extends Component {
     constructor(props) {
         super(props);
         this.state = {
-			exercise: false,
-            nap: false,
-            coffee: false,
-            sun: false,
-            computer: false,
 			user: null,
             username: '',
-		    _jtext: '',
-            password: '',
-            success: null,
-            response: null,
-            email: '',
             name: '',
             journals: []
         }
@@ -36,7 +26,6 @@ class PastJournals extends Component {
         axios.post('/api/getJournals', { username })
         .then((result) => {
           const newJournals = result.data.journals; 
-          console.log("new journals: ", newJournals);
           this.setState({
             journals: [...newJournals]
           })
