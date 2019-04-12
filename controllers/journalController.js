@@ -2,10 +2,14 @@ const models = require('../models/models');
 const journalController = {};
 
 journalController.submitJournal = (req, res) => {
-	const { username, _jtext, exercise, nap, coffee, sun, computer } = req.body;
+	const { username, _jtext, happiness, angriness, stressValue, sleepValue, exercise, nap, coffee, sun, computer } = req.body;
 	var newJournal = new models.Journal({
 		username: username,
 		journalText: _jtext,
+		happiness: happiness,
+		angriness: angriness,
+		stressValue: stressValue,
+		sleepValue: sleepValue,
 		exercise: exercise,
 		nap: nap,
 		coffee: coffee,
