@@ -76,38 +76,8 @@ class Navbar extends Component {
             <span className="navbar-toggler-icon" />
           </button>
 
-      <div className="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul className="navbar-nav ml-auto">
-          <li className = "nav-item">
-            <NavLink className="nav-link" to="/about" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
-              Our Story
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/journal" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
-              Journal
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/pastjournals" onClick={() => scrollToComponent(this.Projects, { offset: 0, align: 'top', duration: 1500})}>
-              Past Journals
-            </NavLink>
-          </li>
-          {this.state.user ? (
-            <li className='nav-item'>
-                <NavLink className='nav-link' to={`/profile/${this.state.user.username}`}>
-                    {this.state.user.username}
-                </NavLink>
-            </li>
-          ) : (
-            <li></li>
-          )}
-          {this.state.user ? (
-            <li className='nav-item'>
-                <a className='nav-link' onClick={this.loggedOut} to="/">
-                    Logout
-                </a>
-              </li>
+          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
