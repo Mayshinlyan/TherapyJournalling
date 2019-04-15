@@ -20,12 +20,12 @@ class Journal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-		    exercise: false,
+		        exercise: false,
             nap: false,
             coffee: false,
             sun: false,
             computer: false,
-			user: null,
+			      user: null,
             username: '',
             _jtext: '',
             happiness: 50,
@@ -37,7 +37,7 @@ class Journal extends Component {
             response: null,
             email: '',
             name: '',
-            journals: [1, 2, 3]
+            journals: []
         }
         this.submitJournal = this.submitJournal.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -77,14 +77,15 @@ class Journal extends Component {
       wordValue(){
         const { _jtext}  = this.state;
         var afinn = require('afinn-165');
-        console.log(afinn.damn); //=> 3
         var words = _jtext.split(" ");
         var i;
         var sum = 0;
         var negsum = 0;
         var possum = 0;
-        for (i = 0; i <words.length;i++){
-            sum += afinn[words[i]];
+        for (i = 0; i < words.length; i++){
+            if (afinn[words[i]] != undefined) {
+              sum += afinn[words[i]];
+            }
             if (afinn[words[i]]>0){
                  possum++;
             }
@@ -92,15 +93,16 @@ class Journal extends Component {
                 negsum++;
             }
         }
-        console.log(sum);
-        console.log(negsum);
-        console.log(possum);
+        console.log("sum: ", sum);
+        console.log("negsum: ", negsum);
+        console.log("possum: ", possum);
       }
 
 	render() {
 		return (
 			<div>
 				<Navbar />
+        <div class="container">
 				<h1>Therapy Journaling</h1>
 				<form onSubmit={this.submitJournal}>
 				<h2>How were your mood levels today?</h2>
@@ -153,8 +155,8 @@ class Journal extends Component {
                   value={this.state.value}
                   />
           </div>
-          <ul>
-                <li>
+          <ul class="journal-icons">
+              <li class="journal-icon">
                 <div className="checkcontainer">
                         <input
                           type="checkbox"
@@ -167,7 +169,7 @@ class Journal extends Component {
                          <div className="text"> Exercise</div>
                     </div>
                 </li>
-            <li>
+            <li class="journal-icon">
                     <div className="checkcontainer">
                         <input
                           type="checkbox"
@@ -180,7 +182,7 @@ class Journal extends Component {
                          <div className="text"> nap</div>
                     </div>
                 </li>
-            <li>
+            <li class="journal-icon">
                     <div className="checkcontainer">
                         <input
                           type="checkbox"
@@ -193,7 +195,7 @@ class Journal extends Component {
                          <div className="text"> coffee</div>
                     </div>
                 </li>
-            <li>
+            <li class="journal-icon">
                     <div className="checkcontainer">
                         <input
                           type="checkbox"
@@ -206,7 +208,7 @@ class Journal extends Component {
                          <div className="text"> outdoors</div>
                     </div>
                 </li>
-              <li>
+            <li class="journal-icon">
                     <div className="checkcontainer">
                         <input
                           type="checkbox"
@@ -234,6 +236,7 @@ class Journal extends Component {
 					<button type="submit" onClick={this.wordValue} className="btn btn-dark w-100">Submit</button>
 					</div>
 				</form>
+        </div>
 				<Footer />
 			</div>
 		);

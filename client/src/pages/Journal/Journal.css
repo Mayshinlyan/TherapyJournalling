@@ -1,8 +1,3 @@
-/* body{
-    padding:50px 200px 50px 200px;
-
-} */
-
 h1 , h2{
   font-family: 'Noto Serif TC', serif;
 }
@@ -78,20 +73,16 @@ h1 , h2{
     cursor: pointer;
   } */
 
- li{
-    display: block;
+ .journal-icon {
+    display: inline-block;
     list-style-type: none;
-    display: inline;
     margin: 0;
     padding: 0;
 
   }
-  ul {
+  
+  .journal-icons {
     list-style-type: none;
-  }
-
-  li {
-    display: inline-block;
   }
 
   input[type="checkbox"]{
