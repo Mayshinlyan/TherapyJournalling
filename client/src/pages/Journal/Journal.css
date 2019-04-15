@@ -133,10 +133,10 @@ h1 , h2{
   transition: .5s ease;
 }
 
-.container:hover .overlay {
+.checkcontainer:hover .overlay {
   opacity: 1;
 }
-.container {
+.checkcontainer {
   position: relative;
   width: 50%;
 }
