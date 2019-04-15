@@ -51,7 +51,7 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+        <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
           <a className="navbar-brand" href="/">
             <img
               src={logo}

@@ -16,7 +16,9 @@ class Home extends Component {
     return (
       <div>
         <Navbar />
-        <h1>Therapy Journaling</h1>
+        <div class="container">
+        <h1>Welcome!</h1>
+        </div>
         <Footer />
       </div>
     );

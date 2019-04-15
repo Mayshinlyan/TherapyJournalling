@@ -4,7 +4,6 @@ import "./Journal.css";
 import axios from "axios";
 import logo from "../../components/Navbar/logo.svg";
 import Navbar from "../../components/Navbar/Navbar";
-import SignUp from "../SignUp/SignUp";
 import Footer from "../../components/Footer/Footer";
 import runicon1 from "../../images/runicon1.png";
 import coffeeicon1 from "../../images/coffeeicon1.png";
@@ -292,8 +291,8 @@ class Journal extends Component {
             }}
           />
         )}
-        <Footer />
       </div>
+      <Footer />
       </div>
     );
   }
