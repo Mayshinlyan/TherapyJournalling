@@ -6,17 +6,26 @@ import logo from "../../components/Navbar/logo.svg"
 import Navbar from '../../components/Navbar/Navbar';
 import SignUp from "../SignUp/SignUp";
 import Footer from "../../components/Footer/Footer";
+import runicon1 from "../../images/runicon1.png";
+import coffeeicon1 from "../../images/coffeeicon1.png";
+import computericon1 from "../../images/computericon1.png";
+import journalicon1 from "../../images/journalicon1.png";
+import sleepicon1 from "../../images/sleepicon1.png";
+import sunicon1 from "../../images/sunicon1.png";
+
+
+
 
 class Journal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-			      exercise: false,
+		    exercise: false,
             nap: false,
             coffee: false,
             sun: false,
             computer: false,
-			      user: null,
+			user: null,
             username: '',
             _jtext: '',
             happiness: 50,
@@ -31,7 +40,8 @@ class Journal extends Component {
             journals: [1, 2, 3]
         }
         this.submitJournal = this.submitJournal.bind(this);
-		    this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.wordValue = this.wordValue.bind(this);
     }
 
     componentWillMount() {
@@ -59,10 +69,32 @@ class Journal extends Component {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-
         this.setState({
           [name]: value
         });
+      }
+
+      wordValue(){
+        const { _jtext}  = this.state;
+        var afinn = require('afinn-165');
+        console.log(afinn.damn); //=> 3
+        var words = _jtext.split(" ");
+        var i;
+        var sum = 0;
+        var negsum = 0;
+        var possum = 0;
+        for (i = 0; i <words.length;i++){
+            sum += afinn[words[i]];
+            if (afinn[words[i]]>0){
+                 possum++;
+            }
+            if (afinn[words[i]]<0) {
+                negsum++;
+            }
+        }
+        console.log(sum);
+        console.log(negsum);
+        console.log(possum);
       }
 
 	render() {
@@ -123,7 +155,7 @@ class Journal extends Component {
           </div>
           <ul>
                 <li>
-                    <div className="container">
+                <div className="checkcontainer">
                         <input
                           type="checkbox"
                           name="exercise"
@@ -131,14 +163,12 @@ class Journal extends Component {
                           id="exercise"
                           checked={this.state.exercise}
                           onChange={this.handleInputChange}/>
-                         <label htmlFor="exercise"><img src="images/runicon1.png"/></label>
-                        <div className="overlay">
+                        <label htmlFor="exercise"><img src={runicon1}/></label>
                          <div className="text"> Exercise</div>
-                        </div>
                     </div>
                 </li>
             <li>
-                    <div className="container">
+                    <div className="checkcontainer">
                         <input
                           type="checkbox"
                           name="nap"
@@ -146,14 +176,12 @@ class Journal extends Component {
                           id="nap"
                           checked={this.state.nap}
                           onChange={this.handleInputChange}/>
-                         <label htmlFor="nap"><img src="images/sleepicon1.png"/></label>
-                        <div className="overlay">
+                         <label htmlFor="nap"><img src={sleepicon1}/></label>
                          <div className="text"> nap</div>
-                        </div>
                     </div>
                 </li>
             <li>
-                    <div className="container">
+                    <div className="checkcontainer">
                         <input
                           type="checkbox"
                           name="coffee"
@@ -161,14 +189,12 @@ class Journal extends Component {
                           id="coffee"
                           checked={this.state.coffee}
                           onChange={this.handleInputChange}/>
-                         <label htmlFor="coffee"><img src="images/coffeeicon1.png"/></label>
-                        <div className="overlay">
+                         <label htmlFor="coffee"><img src={coffeeicon1}/></label>
                          <div className="text"> coffee</div>
-                        </div>
                     </div>
                 </li>
             <li>
-                    <div className="container">
+                    <div className="checkcontainer">
                         <input
                           type="checkbox"
                           name="sun"
@@ -176,14 +202,12 @@ class Journal extends Component {
                           id="sun"
                           checked={this.state.sun}
                           onChange={this.handleInputChange}/>
-                         <label htmlFor="sun"><img src="images/sunicon1.png"/></label>
-                        <div className="overlay">
+                         <label htmlFor="sun"><img src={sunicon1}/></label>
                          <div className="text"> outdoors</div>
-                        </div>
                     </div>
                 </li>
               <li>
-                    <div className="container">
+                    <div className="checkcontainer">
                         <input
                           type="checkbox"
                           name="computer"
@@ -191,10 +215,8 @@ class Journal extends Component {
                           id="computer"
                           checked={this.state.computer}
                           onChange={this.handleInputChange}/>
-                         <label htmlFor="computer"><img src="images/computericon1.png"/></label>
-                        <div className="overlay">
+                         <label htmlFor="computer"><img src={computericon1}/></label>
                          <div className="text"> Computer</div>
-                        </div>
                     </div>
                 </li>
           </ul>
@@ -209,7 +231,7 @@ class Journal extends Component {
 							onChange={this.handleInputChange}/>
 					</div>
 					<div>
-					<button type="submit" className="btn btn-dark w-100">Submit</button>
+					<button type="submit" onClick={this.wordValue} className="btn btn-dark w-100">Submit</button>
 					</div>
 				</form>
 				<Footer />
