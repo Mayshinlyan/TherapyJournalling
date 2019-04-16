@@ -4,6 +4,7 @@ import "./Journal.css";
 import axios from "axios";
 import logo from "../../components/Navbar/logo.svg";
 import Navbar from "../../components/Navbar/Navbar";
+import SignUp from "../SignUp/SignUp";
 import Footer from "../../components/Footer/Footer";
 import runicon1 from "../../images/runicon1.png";
 import coffeeicon1 from "../../images/coffeeicon1.png";
@@ -13,32 +14,32 @@ import sleepicon1 from "../../images/sleepicon1.png";
 import sunicon1 from "../../images/sunicon1.png";
 
 class Journal extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-		        exercise: false,
-            nap: false,
-            coffee: false,
-            sun: false,
-            computer: false,
-			      user: null,
-            username: '',
-            _jtext: '',
-            happiness: 50,
-            angriness: 50,
-            stressValue: 50,
-            sleepValue: 50,
-            password: '',
-            success: null,
-            response: null,
-            email: '',
-            name: '',
-            journals: []
-        }
-        this.submitJournal = this.submitJournal.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.wordValue = this.wordValue.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      exercise: false,
+      nap: false,
+      coffee: false,
+      sun: false,
+      computer: false,
+      user: null,
+      username: "",
+      _jtext: "",
+      happiness: 50,
+      angriness: 50,
+      stressValue: 50,
+      sleepValue: 50,
+      password: "",
+      success: null,
+      response: null,
+      email: "",
+      name: "",
+      journals: [1, 2, 3]
+    };
+    this.submitJournal = this.submitJournal.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.wordValue = this.wordValue.bind(this);
+  }
 
   componentWillMount() {
     this.setState({
@@ -97,41 +98,40 @@ class Journal extends Component {
     });
   }
 
-
-
   wordValue() {
-    const { _jtext}  = this.state;
-    var afinn = require('afinn-165');
+    const { _jtext } = this.state;
+    var afinn = require("afinn-165");
+    console.log(afinn.damn); //=> 3
     var words = _jtext.split(" ");
     var i;
     var sum = 0;
     var negsum = 0;
     var possum = 0;
-    for (i = 0; i < words.length; i++){
-        if (afinn[words[i]] != undefined) {
-          sum += afinn[words[i]];
-        }
-        if (afinn[words[i]]>0){
-              possum++;
-        }
-        if (afinn[words[i]]<0) {
-            negsum++;
-        }
+    for (i = 0; i < words.length; i++) {
+      sum += afinn[words[i]];
+      if (afinn[words[i]] > 0) {
+        possum++;
+      }
+      if (afinn[words[i]] < 0) {
+        negsum++;
+      }
     }
-    console.log("sum: ", sum);
-    console.log("negsum: ", negsum);
-    console.log("possum: ", possum);
+    console.log(sum);
+    console.log(negsum);
+    console.log(possum);
   }
-    
 
-	render() {
-		return (
-			<div>
-				<Navbar />
-        <div class="container">
-				<h1>Therapy Journaling</h1>
-				<form onSubmit={this.submitJournal}>
-				<h2>How were your mood levels today?</h2>
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <div className="page">
+        <h1>Therapy Journaling</h1>
+        <form onSubmit={this.submitJournal}>
+          <h2>How were your mood levels today?</h2>
+          
+          <div className = "tag">
+          <div>Hapiness</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -144,6 +144,10 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          </div>
+
+          <div className = "tag">
+          <div>Stress Level</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -156,6 +160,10 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          </div>
+
+          <div className = "tag">
+          <div>Angriness</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -168,7 +176,11 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          </div>
+
           <h2> How did you sleep?</h2>
+          <div className = "tag">
+          <div>Poorly</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -181,8 +193,10 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
-          <ul class="journal-icons">
-            <li class="journal-icon">
+          <div>Well</div>
+          </div>
+          <ul>
+            <li>
               <div className="checkcontainer">
                 <input
                   type="checkbox"
@@ -198,7 +212,7 @@ class Journal extends Component {
                 <div className="text"> Exercise</div>
               </div>
             </li>
-            <li class="journal-icon">
+            <li>
               <div className="checkcontainer">
                 <input
                   type="checkbox"
@@ -214,7 +228,7 @@ class Journal extends Component {
                 <div className="text"> nap</div>
               </div>
             </li>
-            <li class="journal-icon">
+            <li>
               <div className="checkcontainer">
                 <input
                   type="checkbox"
@@ -230,7 +244,7 @@ class Journal extends Component {
                 <div className="text"> coffee</div>
               </div>
             </li>
-            <li class="journal-icon">
+            <li>
               <div className="checkcontainer">
                 <input
                   type="checkbox"
@@ -246,7 +260,7 @@ class Journal extends Component {
                 <div className="text"> outdoors</div>
               </div>
             </li>
-            <li class="journal-icon">
+            <li>
               <div className="checkcontainer">
                 <input
                   type="checkbox"
@@ -291,8 +305,8 @@ class Journal extends Component {
             }}
           />
         )}
-      </div>
-      <Footer />
+        </div>
+        <Footer />
       </div>
     );
   }
