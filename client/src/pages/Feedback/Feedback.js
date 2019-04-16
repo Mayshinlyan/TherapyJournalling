@@ -3,7 +3,6 @@ import axios from 'axios';
 import './Feedback.css';
 import Navbar from '../../components/Navbar/Navbar';
 import Utility from '../../Utility';
-import Footer from "../../components/Footer/Footer";
 
 
 class Feedback extends Component {
@@ -21,17 +20,20 @@ class Feedback extends Component {
     }
 
 
-   
-
     render() {
+
         return (
-            <div>
-                <Navbar />
-                <div className="page">
-                <h1>Feedback</h1>
+
+        <div className="Top">
+              <Navbar />
+               <div style={{marginTop: '4.7em'}} className='container'>
+
+                    <div className='jumbotron'>
+                    <h1>Your Feedback</h1>
+                    </div>
                 </div>
-                <Footer />
-            </div>
+
+        </div>
 
         );
     }
