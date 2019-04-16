@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import "./About.css";
+import { NavLink, Link, Redirect } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from '../../components/Navbar/Navbar';
+import "./About.css";
+import PropTypes from 'prop-types';
 import Footer from "../../components/Footer/Footer";
 
 
@@ -11,63 +13,16 @@ function About(props) {
   return (
     <div>
       <Navbar />
-
-
-      <div class="container">
-      <h1 class="h1">Our Story</h1>
-          <div class="row">
-              <div class="col-lg-6">
-                <h2>Background</h2>
-                <p>Many people struggle with stress, anxiety, depression, and other mental illnesses but lack the resources 
-                  to help them manage their emotions. Therapy is a great tool, but isn’t an option for everyone due to financial 
-                  concerns, time constraints and more.</p>
-                  
-                  <p>Journaling has been found to be extremely helpful in one’s mood. 
-                  Moreover, it can improve working memory, result in better grades for students, and alter social and linguistic 
-                  behaviour. Although there are many benefits for journaling, many people journal but still get stuck in negative 
-                  thought patterns that inhibit their improvement. Negative thought patterns are a precursor to depression but 
-                  are possible to mediate with the right help.</p>
-                  
-                <h2>TherapyJournaling</h2>
-                <p>TherapyJournal allows you to maintain a private journal and receive automated feedback in order to
-                  enhance the journaling process, avoid negative thought patterns, and improve your wellbeing. Your account
-                  is private: no human will ever read your journals. We will ask you a few questions about your mood, sleep, and
-                  other activities for the day in order to help us give more tailored recommendations.</p>
-
-              </div>
-              <div class="col-lg-6">
-              <h2>Resources</h2>
-                <p>TherapyJournaling is not meant to be a replacement to traditional therapy, but rather an additional tool to utilize. </p>
-                <p>Some resources related to suicide prevention, finding a therapist, and other crisis-related resources are listed below.</p>
-
-                <dl class = "resources">
-                  <dt>National Suicide Prevention Lifeline:</dt>
-                      <dd>1-800-273-TALK (8255), Veterans Press 1</dd>
-                  <dt>Crisis Text Line: </dt>
-                      <dd>Text TALK to 741741</dd>
-                  <dt>IMAlive.org Instant Message Crisis: </dt>
-                      <dd><a href="IMAlive.org">IMAlive.org</a></dd>
-                  <dt>The Trevor Project: </dt>
-                      <dd>Call: 1-866-488-7386</dd>
-                      <dd>Trevor Text: Text TREVOR to 1-202-304-1200</dd>
-                      <dd>Trevor Chat: <a href="www.thetrevorproject.org">www.thetrevorproject.org</a></dd>
-                  <dt>RAINN (National Sexual Assault Hotline): </dt>
-                      <dd>Call: 1-800-656-4673</dd>
-                      <dd>Chat: <a href="hotline.rainn.org">hotline.rainn.org</a></dd>
-                  <dt>National Eating Disorders Association: 1-800-931-2237</dt>
-                      <dd>Chat: <a href="www.myneda.org">www.myneda.org</a></dd>
-                  <dt>Find a Therapist</dt>
-                  
-                <dd>Association for Behavioral and Cognitive Therapies – Find a Therapist: 
-                  <a href="http://www.findcbt.org/FAT/">www.findcbt.org/FAT</a></dd>
-                <dd>Anxiety and Depression Association of America – Find a Therapist: 
-                  <a href="https://adaa.org/netforum/findatherapist">adaa.org/netforum/findatherapist</a></dd>
-      
-          
-                </dl>
-              </div>
-          </div>
-  
+      <div style={{marginTop: '4.7em'}} className='container profile'>
+      <div className='jumbotron'>
+      <h1>Therapy Journaling</h1>
+      <br></br>
+      <p>	Many people struggle with stress, anxiety, depression, and other mental illnesses but lack the resources to help them manage their emotions. Therapy is a great tool but isn’t an option for everyone due to financial concerns as well as the stigma around therapy. In addition for a lot of people, including one of the most stressed populations, college students, access to therapy is very limited. Journaling has been found to be extremely helpful in one’s mood and can even boost the immune system and improve lung and liver functionality. Moreover, it can improve working memory, result in better grades for students, and alter social and linguistic behaviour. Although there are many benefits for journaling, many people journal but still get stuck in negative thought patterns that inhibit their improvement. Negative thought patterns are a precursor to depression but are possible to mediate with the right help. There are popular journaling app like DayOne, Momento, and TheraChat but they do not have features to provide feedback to journals. Although some of them have access to therapist, these features are not free. 
+      <br/><br/>
+      Our website allows users to have private journals and receive automated feedback on their journaling in order in enhance the process and improve their wellbeing. We ask the user about their mood before journaling as well as few questions about their activities and then allow them to write as little or as much as they want. With the information from their day, mood, and journaling we can collect data about what things make them have certain moods. For example, if someone often says they are happy on days when they also report that they exercised, we can suggest to the user that exercising is linked to their wellbeing. Another example is if they report that they are angry and in that journal entry they use lots of negative words and that does not result in a positive mood change, we could suggest that they aim for more positive words. In addition, we search their journals for negative thought patterns and give them tips to alleviate those problems and help them reframe their thinking. We have charts for the users to be able to see how their mood fluctuates with many other factors so they can understand their emotions better. 
+      <br/><br/>
+      </p>
+      </div>
       </div>
       <Footer />
     </div>

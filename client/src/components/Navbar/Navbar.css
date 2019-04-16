@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto|Varela+Round");
 
 .navbar {
-  /* background-color: transparent !important; */
-  /* add bg-light class back to navbar to change back to grey */
-  background-color: #FBD558; 
+  background-color: transparent !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   z-index: 3;
   position: fixed !important;
@@ -39,7 +37,7 @@
 }
 
 .active {
-  color: white !important;
+  color: orange !important;
 }
 
 .left {

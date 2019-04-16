@@ -1,6 +1,21 @@
-/* h1 , h2{
-  font-family: 'Noto Serif TC', serif;
+/* body{
+    padding:50px 200px 50px 200px;
 } */
+.page {
+  padding:20px;
+}
+h1 , h2{
+  font-family: 'Noto Serif TC', serif;
+}
+
+.tag {
+  display: flex;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: baseline;
+}
+
 
 .slidecontainer {
     width: 100%;
@@ -73,16 +88,20 @@
     cursor: pointer;
   } */
 
- .journal-icon {
-    display: inline-block;
+ li{
+    display: block;
     list-style-type: none;
+    display: inline;
     margin: 0;
     padding: 0;
 
   }
-  
-  .journal-icons {
+  ul {
     list-style-type: none;
+  }
+
+  li {
+    display: inline-block;
   }
 
   input[type="checkbox"]{
