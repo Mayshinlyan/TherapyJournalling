@@ -12,6 +12,7 @@ import Profile from "./pages/Profile/Profile";
 import Journal from "./pages/Journal/Journal";
 import PastJournals from "./pages/PastJournals/PastJournals";
 import Feedback from "./pages/Feedback/Feedback";
+import Report from "./pages/Report/Report";
 
 class Routes extends Component {
   constructor(props) {
@@ -101,6 +102,17 @@ class Routes extends Component {
             render={props =>
               this.state.user ? (
                 <Feedback user={this.state.user} {...props} />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/report"
+            render={props =>
+              this.state.user ? (
+                <Report user={this.state.user} {...props} />
               ) : (
                 <Redirect to="/" />
               )
