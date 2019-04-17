@@ -72,7 +72,7 @@ class Report extends Component {
           var freqMap = Object.keys(freq).map(function(key) {
             return { text: key, value: freq[key] };
           });
-          const fontSizeMapper = word => Math.log2(word.value) * 5;
+          const fontSizeMapper = word => Math.log2(word.value) * 50;
           const rotate = word => word.value % 360;
           //*******************************************************//
           //update state
@@ -171,7 +171,6 @@ class Report extends Component {
                         xaxis: {showgrid: false}, yaxis: {showgrid: false}}}
                     />
                 </div>
-                </div>{/* container */}
                 <div>
                     <WordCloud
                       data={this.state.wordFreq}
@@ -179,6 +178,8 @@ class Report extends Component {
                       rotate={this.state.wrodRotate}
                     />,
                 </div>
+                </div>{/* container */}
+         
 				<Footer />
 			</div>
 		);
