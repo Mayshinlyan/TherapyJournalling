@@ -26,7 +26,20 @@ class Report extends Component {
             aggregatedJournals: '',
             wordRotate: null,
             fontSizeMapper: null,
-            wordFreq: []
+            wordFreq: [],
+            happy_exercise: '',
+            happy_outdoors : '',
+            happy_sleep: '',
+            stress_excersie: '',
+            stress_outdoors: '',
+            stress_sleep: '',
+            correlations: [],
+            exercise: [], 
+            nap: [],
+            coffee: [],
+            sun: [],
+            computer: []
+
         };
     }
 
@@ -40,7 +53,8 @@ class Report extends Component {
         //arrays for x, y of mood values for graphs
         const happyX=[], angryX=[], stressedX=[], sleepX=[];
         const happyY=[], angryY=[], stressedY=[], sleepY=[];
-        
+        const exercise=[], nap=[], coffee=[], sun=[], computer = [];
+
         //get journal data
         axios.post('/api/getJournals', { username })
         .then((result) => {
@@ -61,8 +75,15 @@ class Report extends Component {
             stressedY[i] = newJournals[i].stressValue;
             sleepY[i] = newJournals[i].sleepValue;
 
+            exercise[i] = newJournals[i].exercise ? 1 : 0;
+            nap[i] = newJournals[i].nap ? 1 : 0;
+            coffee[i] = newJournals[i].coffee ? 1 : 0;
+            sun[i] = newJournals[i].sun ? 1 : 0;
+            computer[i] = newJournals[i].computer ? 1 : 0;
+
             aggregatedJournals += ' ' + newJournals[i].journalText;
           }
+          
           // this block got from https://stackoverflow.com/a/26877411/1883640
           var words = aggregatedJournals.split(" ");
           var freq = words.reduce(function(p, c) {
@@ -72,7 +93,7 @@ class Report extends Component {
           var freqMap = Object.keys(freq).map(function(key) {
             return { text: key, value: freq[key] };
           });
-          const fontSizeMapper = word => Math.log2(word.value) * 50;
+          const fontSizeMapper = word => Math.log2(word.value) * 15;
           const rotate = word => word.value % 360;
           //*******************************************************//
           //update state
@@ -86,15 +107,73 @@ class Report extends Component {
             angryY: [...angryY],
             stressedY: [...stressedY],
             sleepY: [...sleepY],
+
+            exercise: [...exercise],
+            nap: [...nap],
+            coffee: [...coffee],
+            sun: [...sun],
+            computer: [...computer],
+
             fontSizeMapper: fontSizeMapper,
             wordRotate: rotate,
             wordFreq: [...freqMap],
           })
+
+          this.trends();
         }).catch(error => {
           console.log(error);
         });
     }
 
+    trends(){
+        var Correlation = require('node-correlation');
+        var happy = this.state.happyY;
+        var excersie = this.state.exercise;
+        var sleep = this.state.sleepY;
+        var stress = this.state.stressedY;
+        var outdoors = this.state.sun;
+        
+        var happy_exercise = Correlation.calc(happy, excersie);
+        var happy_sleep = Correlation.calc(happy, sleep);
+        var happy_outdoors = Correlation.calc(happy, outdoors);
+        var stress_excersie = Correlation.calc(stress, excersie);
+        var stress_sleep = Correlation.calc(stress, sleep);
+        var stress_outdoors = Correlation.calc(stress, outdoors);
+        var retStr="";
+        if (Math.abs(happy_exercise) > .5){
+            this.setState({
+                happy_exercise: "Your happiness is correlated with when you exercise. Next time when you are feeling down consider doing a work out!"
+            });
+        }
+        if (Math.abs(happy_sleep) > .5){
+            this.setState({
+                happy_sleep: "Your happiness is correlated with when you get good sleep. You should focus on techniques to help you sleep better. Try and stay off your screens late at night!"
+        });
+    }
+        if (Math.abs(happy_outdoors)> .5){
+            this.setState({
+                happy_outdoors: "Your happiness is correlated with when you go outdoors. When you are having a bad day try getting out more!"
+        });
+        }
+        if(Math.abs(stress_excersie)>.5){
+            this.setState({
+                stress_excersie: "Your stress is correlated with when you exercise. Next time when you are filling stressed consider doing a work out!"
+        });
+        }
+        if (Math.abs(stress_sleep) > .5){
+            this.setState({
+                stress_excersie: "Your stress is correlated with when you get good sleep. You should focus on techniques to help you sleep better. Try and stay off your screens late at night!"
+        });
+        }
+        if (Math.abs(stress_outdoors)> .5){
+            this.setState({
+                stress_excersie: "Your stress is correlated with when you go outdoors. When you are having a stressful day try getting out more!"
+        });
+        }
+        this.setState({
+            correlations: [this.state.happy_exercise,this.state.happy_outdoors,this.state.happy_sleep,this.state.stress_excersie,this.state.stress_outdoors,this.state.stress_sleep]
+    });
+    }
 
 	render() {
 		return (
@@ -102,8 +181,13 @@ class Report extends Component {
 				<Navbar />
                 <div className="container">
                 <h1>Report</h1>
-                <h2>Moods Over Time</h2>
-                <div className="plot-container">
+                <ul className="reportNav">
+                    <li><a href="#plot"> Graphs </a></li>
+                    <li><a href="#cor"> Correlations </a></li>
+                    <li><a href="#cloud"> Word Cloud </a></li>
+                </ul>
+                <h2 id="plot">Moods Over Time</h2>
+                <div className="plot-container" >
                     <Plot
                         data={[
                         {
@@ -171,15 +255,30 @@ class Report extends Component {
                         xaxis: {showgrid: false}, yaxis: {showgrid: false}}}
                     />
                 </div>
-                <div>
+                </div>{/* container */}
+                <div className = "correlations">
+                <h2 id = "cor" >Correlations on activites and moods</h2>
+
+                 <ul>
+                    <li>{this.state.happy_exercise}</li>
+                    <li>{this.state.happy_outdoors}</li>
+                    <li>{this.state.happy_sleep}</li>
+                    <li>{this.state.stress_excersie}</li>
+                    <li>{this.state.stress_outdoors}</li>
+                    <li>{this.state.stress_sleep}</li>
+
+                </ul> 
+                        
+                </div>
+                <div className = "wordCloud" id ="cloud">
+                <h2> Word Cloud </h2>
                     <WordCloud
                       data={this.state.wordFreq}
                       fontSizeMapper={this.state.fontSizeMapper}
                       rotate={this.state.wrodRotate}
-                    />,
+                    />
                 </div>
-                </div>{/* container */}
-         
+             
 				<Footer />
 			</div>
 		);
