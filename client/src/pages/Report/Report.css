@@ -6,3 +6,44 @@
     width: 50%; 
     margin: 0 auto;
 }
+
+.wordCloud{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.correlations{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.reportNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .reportNav li {
+    float: left;
+    margin:10px;
+    background-color: #fbd558;
+    border-radius: 5%;
+  }
+  
+  .reportNav li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .reportNav li a:hover:not(.active) {
+    background-color: #ddd;
+  }
+  
+  .reportNav li a.active {
+    color: white;
+    background-color: #4CAF50;
+  }
