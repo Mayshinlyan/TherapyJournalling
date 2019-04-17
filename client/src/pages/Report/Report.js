@@ -33,7 +33,12 @@ class Report extends Component {
             stress_excersie: '',
             stress_outdoors: '',
             stress_sleep: '',
-            correlations: []
+            correlations: [],
+            exercise: [], 
+            nap: [],
+            coffee: [],
+            sun: [],
+            computer: []
 
         };
     }
@@ -48,8 +53,8 @@ class Report extends Component {
         //arrays for x, y of mood values for graphs
         const happyX=[], angryX=[], stressedX=[], sleepX=[];
         const happyY=[], angryY=[], stressedY=[], sleepY=[];
+        const exercise=[], nap=[], coffee=[], sun=[], computer = [];
 
-        this.trends()
         //get journal data
         axios.post('/api/getJournals', { username })
         .then((result) => {
@@ -70,8 +75,15 @@ class Report extends Component {
             stressedY[i] = newJournals[i].stressValue;
             sleepY[i] = newJournals[i].sleepValue;
 
+            exercise[i] = newJournals[i].exercise ? 1 : 0;
+            nap[i] = newJournals[i].nap ? 1 : 0;
+            coffee[i] = newJournals[i].coffee ? 1 : 0;
+            sun[i] = newJournals[i].sun ? 1 : 0;
+            computer[i] = newJournals[i].computer ? 1 : 0;
+
             aggregatedJournals += ' ' + newJournals[i].journalText;
           }
+          
           // this block got from https://stackoverflow.com/a/26877411/1883640
           var words = aggregatedJournals.split(" ");
           var freq = words.reduce(function(p, c) {
@@ -95,10 +107,19 @@ class Report extends Component {
             angryY: [...angryY],
             stressedY: [...stressedY],
             sleepY: [...sleepY],
+
+            exercise: [...exercise],
+            nap: [...nap],
+            coffee: [...coffee],
+            sun: [...sun],
+            computer: [...computer],
+
             fontSizeMapper: fontSizeMapper,
             wordRotate: rotate,
             wordFreq: [...freqMap],
           })
+
+          this.trends();
         }).catch(error => {
           console.log(error);
         });
@@ -106,11 +127,12 @@ class Report extends Component {
 
     trends(){
         var Correlation = require('node-correlation');
-        var happy = [75, 20, 50, 90, 10];
-        var excersie = [1, 0, 1, 1, 0];
-        var sleep = [80, 30, 60, 90, 30];
-        var stress = [10, 70, 10, 60, 10];
-        var outdoors = [1, 0, 1, 0, 1];
+        var happy = this.state.happyY;
+        var excersie = this.state.exercise;
+        var sleep = this.state.sleepY;
+        var stress = this.state.stressedY;
+        var outdoors = this.state.sun;
+        
         var happy_exercise = Correlation.calc(happy, excersie);
         var happy_sleep = Correlation.calc(happy, sleep);
         var happy_outdoors = Correlation.calc(happy, outdoors);
@@ -120,7 +142,7 @@ class Report extends Component {
         var retStr="";
         if (Math.abs(happy_exercise) > .5){
             this.setState({
-                happy_exercise: "Your happiness is correlated with when you exercise. Next time when you are filling down consider doing a work out!"
+                happy_exercise: "Your happiness is correlated with when you exercise. Next time when you are feeling down consider doing a work out!"
             });
         }
         if (Math.abs(happy_sleep) > .5){
