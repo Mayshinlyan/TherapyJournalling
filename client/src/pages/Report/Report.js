@@ -39,7 +39,6 @@ class Report extends Component {
             coffee: [],
             sun: [],
             computer: []
-
         };
     }
 
@@ -132,7 +131,7 @@ class Report extends Component {
         var sleep = this.state.sleepY;
         var stress = this.state.stressedY;
         var outdoors = this.state.sun;
-        
+
         var happy_exercise = Correlation.calc(happy, excersie);
         var happy_sleep = Correlation.calc(happy, sleep);
         var happy_outdoors = Correlation.calc(happy, outdoors);
@@ -260,13 +259,24 @@ class Report extends Component {
                 <h2 id = "cor" >Correlations on activites and moods</h2>
 
                  <ul>
-                    <li>{this.state.happy_exercise}</li>
-                    <li>{this.state.happy_outdoors}</li>
-                    <li>{this.state.happy_sleep}</li>
-                    <li>{this.state.stress_excersie}</li>
-                    <li>{this.state.stress_outdoors}</li>
-                    <li>{this.state.stress_sleep}</li>
-
+                    {this.state.happy_exercise !== '' &&
+                     <li>{this.state.happy_exercise}</li>
+                    }
+                    {this.state.happy_outdoors !== '' &&
+                     <li>{this.state.happy_outdoors}</li>
+                    }
+                    {this.state.happy_sleep !== '' &&
+                     <li>{this.state.happy_sleep}</li>
+                    }
+                    {this.state.stress_excersie !== '' &&
+                     <li>{this.state.stress_excersie}</li>
+                    }
+                    {this.state.stress_outdoors !== '' &&
+                     <li>{this.state.stress_outdoors}</li>
+                    }
+                    {this.state.stress_sleep !== '' &&
+                     <li>{this.state.stress_sleep}</li>
+                    }
                 </ul> 
                         
                 </div>
