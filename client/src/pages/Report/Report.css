@@ -17,7 +17,7 @@
     margin: 0 auto;
 }
 
-.reportNav {
+.reportNav, .cor {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -46,4 +46,11 @@
   .reportNav li a.active {
     color: white;
     background-color: #4CAF50;
+  }
+
+  .cor li{
+    margin:10px;
+    background-color: #fbd558;
+    border-radius: 2%;
+    padding:10px;
   }
