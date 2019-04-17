@@ -98,59 +98,80 @@ class Report extends Component {
 
 	render() {
 		return (
-            
 			<div>
 				<Navbar />
                 <div className="container">
                 <h1>Report</h1>
-                <Plot
-                    data={[
-                    {
-                        x: this.state.happyX,
-                        y: this.state.happyY,
-                        type: 'scattergl',
-                        mode: 'lines+markers',
-                        marker: {color: 'red'},
-                    }]}
-                    layout={{width: 320, height: 240, title: 'Happiness'}}
-                />
-
-                <Plot
-                    data={[
-                    {
-                        x: this.state.angryX,
-                        y: this.state.angryY,
-                        type: 'scatter',
-                        mode: 'lines+markers',
-                        marker: {color: 'red'},
-                    }]}
-                    layout={{width: 320, height: 240, title: 'Angriness'}}
-                />  
-
-                <Plot
-                    data={[
-                    {
-                        x: this.state.stressedX,
-                        y: this.state.stressedY,
-                        type: 'scatter',
-                        mode: 'lines+markers',
-                        marker: {color: 'red'},
-                    }]}
-                    layout={{width: 320, height: 240, title: 'Stress'}}
-                />  
-
-                <Plot
-                    data={[
-                    {
-                        x: this.state.sleepX,
-                        y: this.state.sleepY,
-                        type: 'scatter',
-                        mode: 'lines+markers',
-                        marker: {color: 'red'},
-                    }]}
-                    layout={{width: 320, height: 240, title: 'Sleep'}}
-                />  
+                <h2>Moods Over Time</h2>
+                <div className="plot-container">
+                    <Plot
+                        data={[
+                        {
+                            x: this.state.happyX,
+                            y: this.state.happyY,
+                            hoverlabel: {bgcolor: 'white'},
+                            type: 'scatter',
+                            mode: 'lines+markers',
+                            marker: {color: '#FBD558', symbol: 'diamond'},
+                            line: {color: '#33A1FB'},
+                            
+                        }]}
+                        layout={{width: 600, height: 400, title: 'Happiness', 
+                        xaxis: {showgrid: false}, yaxis: {showgrid: false}}}
+                    />
                 </div>
+                <div className="plot-container">
+                    <Plot
+                        data={[
+                        {
+                            x: this.state.angryX,
+                            y: this.state.angryY,
+                            hoverlabel: {bgcolor: 'white'},
+                            type: 'scatter',
+                            mode: 'lines+markers',
+                            marker: {color: '#FBD558', symbol: 'diamond'},
+                            line: {color: '#33A1FB'},
+                            
+                        }]}
+                        layout={{width: 600, height: 400, title: 'Anger', 
+                        xaxis: {showgrid: false}, yaxis: {showgrid: false}}}
+                    />
+                </div>
+                <div className="plot-container">
+                    <Plot
+                        data={[
+                        {
+                            x: this.state.stressedX,
+                            y: this.state.stressedY,
+                            hoverlabel: {bgcolor: 'white'},
+                            type: 'scatter',
+                            mode: 'lines+markers',
+                            marker: {color: '#FBD558', symbol: 'diamond'},
+                            line: {color: '#33A1FB'},
+                            
+                        }]}
+                        layout={{width: 600, height: 400, title: 'Stress', 
+                        xaxis: {showgrid: false}, yaxis: {showgrid: false}}}
+                    />
+                </div>
+                <div className="plot-container">
+                    <Plot
+                        data={[
+                        {
+                            x: this.state.sleepX,
+                            y: this.state.sleepY,
+                            hoverlabel: {bgcolor: 'white'},
+                            type: 'scatter',
+                            mode: 'lines+markers',
+                            marker: {color: '#FBD558', symbol: 'diamond'},
+                            line: {color: '#33A1FB'},
+                            
+                        }]}
+                        layout={{width: 600, height: 400, title: 'Sleep', 
+                        xaxis: {showgrid: false}, yaxis: {showgrid: false}}}
+                    />
+                </div>
+                </div>{/* container */}
                 <div>
                     <WordCloud
                       data={this.state.wordFreq}
