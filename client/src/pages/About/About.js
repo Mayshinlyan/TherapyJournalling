@@ -1,22 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import "./About.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from "../../components/Footer/Footer";
 
-
 function About(props) {
-  const { classes } = props;
-
   return (
     <div>
       <Navbar />
-
-
-      <div class="container">
-      <h1 class="h1">Our Story</h1>
-          <div class="row">
-              <div class="col-lg-6">
+      <div className="container">
+      <h1>Our Story</h1>
+          <div className="row">
+              <div className="col-lg-6">
                 <h2>Background</h2>
                 <p>Many people struggle with stress, anxiety, depression, and other mental illnesses but lack the resources 
                   to help them manage their emotions. Therapy is a great tool, but isn’t an option for everyone due to financial 
@@ -35,12 +30,12 @@ function About(props) {
                   other activities for the day in order to help us give more tailored recommendations.</p>
 
               </div>
-              <div class="col-lg-6">
+              <div className="col-lg-6">
               <h2>Resources</h2>
                 <p>TherapyJournaling is not meant to be a replacement to traditional therapy, but rather an additional tool to utilize. </p>
                 <p>Some resources related to suicide prevention, finding a therapist, and other crisis-related resources are listed below.</p>
 
-                <dl class = "resources">
+                <dl className="resources">
                   <dt>National Suicide Prevention Lifeline:</dt>
                       <dd>1-800-273-TALK (8255), Veterans Press 1</dd>
                   <dt>Crisis Text Line: </dt>
@@ -62,12 +57,9 @@ function About(props) {
                   <a href="http://www.findcbt.org/FAT/">www.findcbt.org/FAT</a></dd>
                 <dd>Anxiety and Depression Association of America – Find a Therapist: 
                   <a href="https://adaa.org/netforum/findatherapist">adaa.org/netforum/findatherapist</a></dd>
-      
-          
                 </dl>
               </div>
           </div>
-  
       </div>
       <Footer />
     </div>

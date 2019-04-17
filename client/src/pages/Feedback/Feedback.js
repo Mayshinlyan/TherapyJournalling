@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './Feedback.css';
 import Navbar from '../../components/Navbar/Navbar';
-import Utility from '../../Utility';
-
 
 class Feedback extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
     }
 
@@ -19,11 +15,8 @@ class Feedback extends Component {
         });
     }
 
-
     render() {
-
         return (
-
         <div className="Top">
               <Navbar />
                <div style={{marginTop: '4.7em'}} className='container'>
@@ -32,9 +25,7 @@ class Feedback extends Component {
                     <h1>Your Feedback</h1>
                     </div>
                 </div>
-
         </div>
-
         );
     }
 }

@@ -97,6 +97,7 @@ handleChange(e) {
                       <Redirect to={{pathname: '/signin'}} />
                   )}
           </div> {/* end of modal dialog */}
+          <Footer />
       </div>
   );
   }

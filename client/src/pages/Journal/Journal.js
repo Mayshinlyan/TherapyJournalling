@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import { NavLink, Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import "./Journal.css";
 import axios from "axios";
-import logo from "../../components/Navbar/logo.svg";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import runicon1 from "../../images/runicon1.png";
 import coffeeicon1 from "../../images/coffeeicon1.png";
 import computericon1 from "../../images/computericon1.png";
-import journalicon1 from "../../images/journalicon1.png";
 import sleepicon1 from "../../images/sleepicon1.png";
 import sunicon1 from "../../images/sunicon1.png";
 
@@ -50,7 +48,6 @@ class Journal extends Component {
   submitJournal(e) {
     e.preventDefault();
     const {
-      user,
       username,
       _jtext,
       happiness,
@@ -97,8 +94,6 @@ class Journal extends Component {
     });
   }
 
-
-
   wordValue() {
     const { _jtext}  = this.state;
     var afinn = require('afinn-165');
@@ -108,7 +103,7 @@ class Journal extends Component {
     var negsum = 0;
     var possum = 0;
     for (i = 0; i < words.length; i++){
-        if (afinn[words[i]] != undefined) {
+        if (afinn[words[i]] !== undefined) {
           sum += afinn[words[i]];
         }
         if (afinn[words[i]]>0){
@@ -181,8 +176,8 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
-          <ul class="journal-icons">
-            <li class="journal-icon">
+          <ul className="journal-icons">
+            <li className="journal-icon">
               <div className="checkcontainer">
                 <input
                   type="checkbox"
@@ -193,12 +188,12 @@ class Journal extends Component {
                   onChange={this.handleInputChange}
                 />
                 <label htmlFor="exercise">
-                  <img src={runicon1} />
+                  <img src={runicon1} alt="Run"/>
                 </label>
                 <div className="text"> Exercise</div>
               </div>
             </li>
-            <li class="journal-icon">
+            <li className="journal-icon">
               <div className="checkcontainer">
                 <input
                   type="checkbox"
@@ -209,12 +204,12 @@ class Journal extends Component {
                   onChange={this.handleInputChange}
                 />
                 <label htmlFor="nap">
-                  <img src={sleepicon1} />
+                  <img src={sleepicon1} alt="Sleep"/>
                 </label>
                 <div className="text"> nap</div>
               </div>
             </li>
-            <li class="journal-icon">
+            <li className="journal-icon">
               <div className="checkcontainer">
                 <input
                   type="checkbox"
@@ -225,12 +220,12 @@ class Journal extends Component {
                   onChange={this.handleInputChange}
                 />
                 <label htmlFor="coffee">
-                  <img src={coffeeicon1} />
+                  <img src={coffeeicon1} alt="Coffee"/>
                 </label>
                 <div className="text"> coffee</div>
               </div>
             </li>
-            <li class="journal-icon">
+            <li className="journal-icon">
               <div className="checkcontainer">
                 <input
                   type="checkbox"
@@ -241,12 +236,12 @@ class Journal extends Component {
                   onChange={this.handleInputChange}
                 />
                 <label htmlFor="sun">
-                  <img src={sunicon1} />
+                  <img src={sunicon1} alt="Sun"/>
                 </label>
                 <div className="text"> outdoors</div>
               </div>
             </li>
-            <li class="journal-icon">
+            <li className="journal-icon">
               <div className="checkcontainer">
                 <input
                   type="checkbox"
@@ -257,7 +252,7 @@ class Journal extends Component {
                   onChange={this.handleInputChange}
                 />
                 <label htmlFor="computer">
-                  <img src={computericon1} />
+                  <img src={computericon1} alt="Computer"/>
                 </label>
                 <div className="text"> Computer</div>
               </div>
