@@ -128,7 +128,7 @@ class Journal extends Component {
 		return (
 			<div>
 				<Navbar />
-        <div class="container">
+        <div className="container">
 				<h1>Therapy Journaling</h1>
 				<form onSubmit={this.submitJournal}>
 				<h2>How were your mood levels today?</h2>
