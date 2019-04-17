@@ -77,9 +77,8 @@ class Profile extends Component {
     render() {
         const dbusername = this.state.user.username;
         const dbemail = this.state.user.email;
-        const dbname = this.state.user.name;
         const { createdAt } = this.state.user;
-        const { username, email, name, curPassword } = this.state;
+        const { username, email, curPassword } = this.state;
         return (
 
         <div className="Top">
@@ -89,7 +88,6 @@ class Profile extends Component {
                 <div className='jumbotron'>
                     <h4 className='card-title'>Username: {dbusername}</h4>
                     <p className='card-text'>Email: {dbemail}</p>
-                    {/* <p className='card-text'>Name: {dbname}</p> */}
                     <p className='card-text'>Created: {Utility.parseDate(createdAt).elapsed}</p>
                     <a className='btn btn-dark' data-toggle='collapse' href='#editForm' aria-expanded='false' aria-controls='editForm'>
                         Edit

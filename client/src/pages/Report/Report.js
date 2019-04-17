@@ -32,7 +32,7 @@ class Report extends Component {
         });
 
         const username = this.props.user.username;
-        //arrays for x, y values of mood values for graphs
+        //arrays for x, y of mood values for graphs
         const happyX=[], angryX=[], stressedX=[], sleepX=[];
         const happyY=[], angryY=[], stressedY=[], sleepY=[];
         
@@ -78,14 +78,14 @@ class Report extends Component {
             
 			<div>
 				<Navbar />
-                <div class="container">
+                <div className="container">
                 <h1>Report</h1>
                 <Plot
                     data={[
                     {
                         x: this.state.happyX,
                         y: this.state.happyY,
-                        type: 'scatter',
+                        type: 'scattergl',
                         mode: 'lines+markers',
                         marker: {color: 'red'},
                     }]}

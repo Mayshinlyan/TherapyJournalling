@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import PropTypes from "prop-types";
-
 import axios from "axios";
-
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import SignIn from "./pages/SignIn/SignIn";
