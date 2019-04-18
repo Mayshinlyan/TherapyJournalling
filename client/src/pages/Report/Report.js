@@ -307,163 +307,66 @@ class Report extends Component {
         <div className="correlations">
           <h2 id="cor">Correlations on activites and moods</h2>
 
-	render() {
-		return (
-			<div>
-				<Navbar />
-                <div className="container">
-                <h1>Report</h1>
-                <ul className="reportNav">
-                    <li><a href="#plot"> Graphs </a></li>
-                    <li><a href="#cor"> Correlations </a></li>
-                    <li><a href="#cloud"> Word Cloud </a></li>
-                </ul>
-                <h2 id="plot">Moods Over Time</h2>
-                <div className="plot-container" >
-                    <Plot
-                        data={[
-                        {
-                            x: this.state.happyX,
-                            y: this.state.happyY,
-                            hoverlabel: {bgcolor: 'white'},
-                            type: 'scatter',
-                            mode: 'lines+markers',
-                            marker: {color: '#FBD558', symbol: 'diamond'},
-                            line: {color: '#33A1FB'},
-                        }]}
-                        layout={
-                            {
-                                width: 600, height: 400, title: 'Happiness',
-                                xaxis: {showgrid: false, title: {text: "Journal Entry #"}},
-                                yaxis: {title: {text: "Happiness Measure"}}
-                            }
-                        }
-                    />
-                </div>
-                <div className="plot-container">
-                    <Plot
-                        data={[
-                        {
-                            x: this.state.angryX,
-                            y: this.state.angryY,
-                            hoverlabel: {bgcolor: 'white'},
-                            type: 'scatter',
-                            mode: 'lines+markers',
-                            marker: {color: '#FBD558', symbol: 'diamond'},
-                            line: {color: '#33A1FB'},
+          <ul className="cor">
+            {this.state.happy_exercise !==
+              "Your happiness and exercise have not been found to be correlated" && (
+              <li>
+                <h3>Happiness and exercise</h3>
+                <p> {this.state.happy_exercise}</p>
+              </li>
+            )}
+            {this.state.happy_outdoors !==
+              "Your happiness and outdoor time have not been found to be correlated" && (
+              <li>
+                <h3>
+                  <p>Happiness and outdoors</p>
+                </h3>
+                {this.state.happy_outdoors}
+              </li>
+            )}
+            {this.state.happy_sleep !==
+              "Your happiness and sleep have not been found to be correlated" && (
+              <li>
+                <h3>Happiness and sleep</h3>
+                <p>{this.state.happy_sleep} </p>
+              </li>
+            )}
+            {this.state.stress_exercise !==
+              "Your stress and exercise have not been found to be correlated" && (
+              <li>
+                <h3>Stress and exercise </h3>
+                <p> {this.state.stress_exercise}</p>
+              </li>
+            )}
+            {this.state.stress_sleep !==
+              "Your stress and sleep have not been found to be correlated" && (
+              <li>
+                <h3>Stress and sleep</h3>
+                <p>{this.state.stress_sleep}</p>
+              </li>
+            )}
+            {this.state.stress_outdoors !==
+              "Your stress and outdoor have not been found to be correlated" && (
+              <li>
+                <h3>Stress and outdoors</h3>
+                <p>{this.state.stress_outdoors}</p>
+              </li>
+            )}
+          </ul>
+        </div>
+        <div className="wordCloud" id="cloud">
+          <h2> Word Cloud </h2>
+          <WordCloud
+            data={this.state.wordFreq}
+            fontSizeMapper={this.state.fontSizeMapper}
+            rotate={this.state.wrodRotate}
+          />
+        </div>
 
-                        }]}
-                        layout={
-                            {
-                                width: 600, height: 400, title: 'Anger',
-                                xaxis: {showgrid: false, title: {text: "Journal Entry #"}},
-                                yaxis: {title: {text: "Anger Measure"}}
-                            }
-                        }
-                    />
-                </div>
-                <div className="plot-container">
-                    <Plot
-                        data={[
-                        {
-                            x: this.state.stressedX,
-                            y: this.state.stressedY,
-                            hoverlabel: {bgcolor: 'white'},
-                            type: 'scatter',
-                            mode: 'lines+markers',
-                            marker: {color: '#FBD558', symbol: 'diamond'},
-                            line: {color: '#33A1FB'},
-
-                        }]}
-                        layout={
-                            {
-                                width: 600, height: 400, title: 'Stress',
-                                xaxis: {showgrid: false, title: {text: "Journal Entry #"}},
-                                yaxis: {title: {text: "Stress Measure"}}
-                            }
-                        }
-                    />
-                </div>
-                <div className="plot-container">
-                    <Plot
-                        data={[
-                        {
-                            x: this.state.sleepX,
-                            y: this.state.sleepY,
-                            hoverlabel: {bgcolor: 'white'},
-                            type: 'scatter',
-                            mode: 'lines+markers',
-                            marker: {color: '#FBD558', symbol: 'diamond'},
-                            line: {color: '#33A1FB'},
-
-                        }]}
-                        layout={
-                            {
-                                width: 600, height: 400, title: 'Sleep',
-                                xaxis: {showgrid: false, title: {text: "Journal Entry #"}},
-                                yaxis: {title: {text: "Sleep Measure"}}
-                            }
-                        }
-                    />
-                </div>
-                </div>{/* container */}
-                <div className = "correlations">
-                <h2 id = "cor" >Correlations on activites and moods</h2>
-
-                <ul className="cor">
-                    {this.state.happy_exercise !== 'Your happiness and exercise have not been found to be correlated' &&
-                        <li>
-                        <h3>Happiness and exercise</h3>
-                        <p> {this.state.happy_exercise}</p>
-                        </li>
-                    }
-                    {this.state.happy_outdoors !== 'Your happiness and outdoor time have not been found to be correlated' &&
-                        <li>
-                        <h3>
-                        <p>Happiness and outdoors</p>
-                        </h3>{this.state.happy_outdoors}
-                        </li>
-                    }
-                    {this.state.happy_sleep !== 'Your happiness and sleep have not been found to be correlated' &&
-                        <li>
-                        <h3>Happiness and sleep</h3>
-                        <p>{this.state.happy_sleep} </p>
-                        </li>
-                    }
-                    {this.state.stress_exercise !== 'Your stress and exercise have not been found to be correlated' &&
-                        <li>
-                        <h3>Stress and exercise </h3>
-                        <p> {this.state.stress_exercise}</p>
-                        </li>
-                    }
-                    {this.state.stress_sleep !== 'Your stress and sleep have not been found to be correlated' &&
-                        <li>
-                        <h3>Stress and sleep</h3>
-                        <p>{this.state.stress_sleep}</p>
-                        </li>
-                    }
-                    {this.state.stress_outdoors !== 'Your stress and outdoor have not been found to be correlated' &&
-                        <li>
-                        <h3>Stress and outdoors</h3>
-                        <p>{this.state.stress_outdoors}</p>
-                        </li>
-                    }
-                </ul>
-
-                </div>
-                <div className = "wordCloud" id ="cloud">
-                <h2> Word Cloud </h2>
-                    <WordCloud
-                      data={this.state.wordFreq}
-                      fontSizeMapper={this.state.fontSizeMapper}
-                      rotate={this.state.wrodRotate}
-                    />
-                </div>
-
-				<Footer />
-			</div>
-		);
-	}
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default Report;
