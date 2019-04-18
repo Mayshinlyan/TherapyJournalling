@@ -22,7 +22,7 @@ class Feedback extends Component {
                <div style={{marginTop: '4.7em'}} className='container'>
 
                     <div className='jumbotron'>
-                    <h1>Your Feedback</h1>
+                    <h1>My Feedback</h1>
                     </div>
                 </div>
         </div>
