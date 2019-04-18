@@ -39,16 +39,19 @@ class PastJournals extends Component {
 		return (
 			<div>
 				<Navbar />
-                <h1>Therapy Journaling</h1>
-                <div>
+                <div className="page">
+                <h1 className="past-header">Your Past Journals</h1>
+                <div className="scroll">
                     {journals.map(function(journal, jid){
                         return (
                         <div className="past-journal" key={jid}>
                             <div>Created on: {journal.createdAt}</div>
+                            <br/>
                             <div>Journal text: {journal.journalText}</div>
                         </div>
                         )
                     })}
+                </div>
                 </div>
 				<Footer />
 			</div>

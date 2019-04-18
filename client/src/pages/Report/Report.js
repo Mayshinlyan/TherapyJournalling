@@ -27,18 +27,19 @@ class Report extends Component {
             wordRotate: null,
             fontSizeMapper: null,
             wordFreq: [],
-            happy_exercise: '',
-            happy_outdoors : '',
-            happy_sleep: '',
-            stress_excersie: '',
-            stress_outdoors: '',
-            stress_sleep: '',
+            happy_exercise: 'Your happiness and exercise have not been found to be correlated',
+            happy_outdoors : 'Your happiness and outdoor time have not been found to be correlated',
+            happy_sleep: 'Your happiness and sleep have not been found to be correlated',
+            stress_excersie: 'Your stress and exercise have not been found to be correlated',
+            stress_outdoors: 'Your stress and outdoor have not been found to be correlated',
+            stress_sleep: 'Your stress and sleep have not been found to be correlated',
             correlations: [],
             exercise: [], 
             nap: [],
             coffee: [],
             sun: [],
             computer: []
+
         };
     }
 
@@ -122,6 +123,8 @@ class Report extends Component {
         }).catch(error => {
           console.log(error);
         });
+        this.trends()
+
     }
 
     trends(){
@@ -131,7 +134,7 @@ class Report extends Component {
         var sleep = this.state.sleepY;
         var stress = this.state.stressedY;
         var outdoors = this.state.sun;
-
+        
         var happy_exercise = Correlation.calc(happy, excersie);
         var happy_sleep = Correlation.calc(happy, sleep);
         var happy_outdoors = Correlation.calc(happy, outdoors);
@@ -161,17 +164,15 @@ class Report extends Component {
         }
         if (Math.abs(stress_sleep) > .5){
             this.setState({
-                stress_excersie: "Your stress is correlated with when you get good sleep. You should focus on techniques to help you sleep better. Try and stay off your screens late at night!"
+                stress_sleep: "Your stress is correlated with when you get good sleep. You should focus on techniques to help you sleep better. Try and stay off your screens late at night!"
         });
         }
         if (Math.abs(stress_outdoors)> .5){
             this.setState({
-                stress_excersie: "Your stress is correlated with when you go outdoors. When you are having a stressful day try getting out more!"
+                stress_outdoors: "Your stress is correlated with when you go outdoors. When you are having a stressful day try getting out more!"
         });
         }
-        this.setState({
-            correlations: [this.state.happy_exercise,this.state.happy_outdoors,this.state.happy_sleep,this.state.stress_excersie,this.state.stress_outdoors,this.state.stress_sleep]
-    });
+    console.log(this.state.happy_exercise);
     }
 
 	render() {
@@ -276,26 +277,43 @@ class Report extends Component {
                 </div>{/* container */}
                 <div className = "correlations">
                 <h2 id = "cor" >Correlations on activites and moods</h2>
+                
+                 <ul className="cor">
+                    <li>
+                    <h3>
+                        Happiness and excersie
+                    </h3>
+                    <p> {this.state.happy_exercise}</p>
+                    </li>
+                    <li>
+                    <h3>
+                    <p>Happiness and outdoors</p>
+                    </h3>{this.state.happy_outdoors}</li>
+                    <li>
+                    <h3>
+                        Happiness and Sleep
+                    </h3>
+                    <p>{this.state.happy_sleep} </p>
+                    </li>
+                    <li>
+                    <h3>
+                      Stress and excersie 
+                    </h3>
+                    <p> {this.state.stress_excersie}</p>
+                    </li>
+                    <li>
+                    <h3>
+                        Stress and Sleep
+                    </h3>
+                    <p>{this.state.stress_sleep}</p>
+                    </li>
+                    <li>
+                    <h3>
+                        Stress and outdoors
+                    </h3>
+                    <p>{this.state.stress_outdoors}</p>
+                    </li>
 
-                 <ul>
-                    {this.state.happy_exercise !== '' &&
-                     <li>{this.state.happy_exercise}</li>
-                    }
-                    {this.state.happy_outdoors !== '' &&
-                     <li>{this.state.happy_outdoors}</li>
-                    }
-                    {this.state.happy_sleep !== '' &&
-                     <li>{this.state.happy_sleep}</li>
-                    }
-                    {this.state.stress_excersie !== '' &&
-                     <li>{this.state.stress_excersie}</li>
-                    }
-                    {this.state.stress_outdoors !== '' &&
-                     <li>{this.state.stress_outdoors}</li>
-                    }
-                    {this.state.stress_sleep !== '' &&
-                     <li>{this.state.stress_sleep}</li>
-                    }
                 </ul> 
                         
                 </div>
