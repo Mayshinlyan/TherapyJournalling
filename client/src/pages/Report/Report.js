@@ -30,7 +30,7 @@ class Report extends Component {
             happy_exercise: 'Your happiness and exercise have not been found to be correlated',
             happy_outdoors : 'Your happiness and outdoor time have not been found to be correlated',
             happy_sleep: 'Your happiness and sleep have not been found to be correlated',
-            stress_excersie: 'Your stress and exercise have not been found to be correlated',
+            stress_exercise: 'Your stress and exercise have not been found to be correlated',
             stress_outdoors: 'Your stress and outdoor have not been found to be correlated',
             stress_sleep: 'Your stress and sleep have not been found to be correlated',
             correlations: [],
@@ -130,15 +130,15 @@ class Report extends Component {
     trends(){
         var Correlation = require('node-correlation');
         var happy = this.state.happyY;
-        var excersie = this.state.exercise;
+        var exercise = this.state.exercise;
         var sleep = this.state.sleepY;
         var stress = this.state.stressedY;
         var outdoors = this.state.sun;
         
-        var happy_exercise = Correlation.calc(happy, excersie);
+        var happy_exercise = Correlation.calc(happy, exercise);
         var happy_sleep = Correlation.calc(happy, sleep);
         var happy_outdoors = Correlation.calc(happy, outdoors);
-        var stress_excersie = Correlation.calc(stress, excersie);
+        var stress_exercise = Correlation.calc(stress, exercise);
         var stress_sleep = Correlation.calc(stress, sleep);
         var stress_outdoors = Correlation.calc(stress, outdoors);
         var retStr="";
@@ -157,9 +157,9 @@ class Report extends Component {
                 happy_outdoors: "Your happiness is correlated with when you go outdoors. When you are having a bad day try getting out more!"
         });
         }
-        if(Math.abs(stress_excersie)>.5){
+        if(Math.abs(stress_exercise)>.5){
             this.setState({
-                stress_excersie: "Your stress is correlated with when you exercise. Next time when you are filling stressed consider doing a work out!"
+                stress_exercise: "Your stress is correlated with when you exercise. Next time when you are filling stressed consider doing a work out!"
         });
         }
         if (Math.abs(stress_sleep) > .5){
@@ -280,7 +280,7 @@ class Report extends Component {
                 
                  <ul className="cor">
                     <li>
-                    <h3>Happiness and excersie</h3>
+                    <h3>Happiness and exercise</h3>
                     <p> {this.state.happy_exercise}</p>
                     </li>
                     <li>
@@ -288,15 +288,15 @@ class Report extends Component {
                     <p>Happiness and outdoors</p>
                     </h3>{this.state.happy_outdoors}</li>
                     <li>
-                    <h3>Happiness and Sleep</h3>
+                    <h3>Happiness and sleep</h3>
                     <p>{this.state.happy_sleep} </p>
                     </li>
                     <li>
-                    <h3>Stress and excersie </h3>
-                    <p> {this.state.stress_excersie}</p>
+                    <h3>Stress and exercise </h3>
+                    <p> {this.state.stress_exercise}</p>
                     </li>
                     <li>
-                    <h3>Stress and Sleep</h3>
+                    <h3>Stress and sleep</h3>
                     <p>{this.state.stress_sleep}</p>
                     </li>
                     <li>
