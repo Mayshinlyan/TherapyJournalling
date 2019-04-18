@@ -11,8 +11,8 @@ class Home extends Component {
     return (
       <div>
         <Navbar />
-        <div className="container">
-        <h1>Welcome!</h1>
+        <div className="home">
+        <div className="title">Welcome</div>
         </div>
         <Footer />
       </div>
