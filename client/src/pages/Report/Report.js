@@ -280,9 +280,7 @@ class Report extends Component {
                 
                  <ul className="cor">
                     <li>
-                    <h3>
-                        Happiness and excersie
-                    </h3>
+                    <h3>Happiness and excersie</h3>
                     <p> {this.state.happy_exercise}</p>
                     </li>
                     <li>
@@ -290,27 +288,19 @@ class Report extends Component {
                     <p>Happiness and outdoors</p>
                     </h3>{this.state.happy_outdoors}</li>
                     <li>
-                    <h3>
-                        Happiness and Sleep
-                    </h3>
+                    <h3>Happiness and Sleep</h3>
                     <p>{this.state.happy_sleep} </p>
                     </li>
                     <li>
-                    <h3>
-                      Stress and excersie 
-                    </h3>
+                    <h3>Stress and excersie </h3>
                     <p> {this.state.stress_excersie}</p>
                     </li>
                     <li>
-                    <h3>
-                        Stress and Sleep
-                    </h3>
+                    <h3>Stress and Sleep</h3>
                     <p>{this.state.stress_sleep}</p>
                     </li>
                     <li>
-                    <h3>
-                        Stress and outdoors
-                    </h3>
+                    <h3>Stress and outdoors</h3>
                     <p>{this.state.stress_outdoors}</p>
                     </li>
 
