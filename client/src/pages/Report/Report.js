@@ -39,6 +39,7 @@ class Report extends Component {
             coffee: [],
             sun: [],
             computer: []
+
         };
     }
 
@@ -133,7 +134,7 @@ class Report extends Component {
         var sleep = this.state.sleepY;
         var stress = this.state.stressedY;
         var outdoors = this.state.sun;
-
+        
         var happy_exercise = Correlation.calc(happy, excersie);
         var happy_sleep = Correlation.calc(happy, sleep);
         var happy_outdoors = Correlation.calc(happy, outdoors);
@@ -255,9 +256,10 @@ class Report extends Component {
                     />
                 </div>
                 </div>{/* container */}
+                <div className = "correlations">
+                <h2 id = "cor" >Correlations on activites and moods</h2>
                 
-                
-                 {/* <ul className="cor">
+                 <ul className="cor">
                     <li>
                     <h3>
                         Happiness and excersie
@@ -291,30 +293,8 @@ class Report extends Component {
                         Stress and outdoors
                     </h3>
                     <p>{this.state.stress_outdoors}</p>
-                    </li> */}
+                    </li>
 
-
-                 <ul ClassName = "correlations">
-                 <h2 id = "cor" >Correlations on activites and moods</h2>
-
-                    {this.state.happy_exercise !== '' &&
-                     <li>{this.state.happy_exercise}</li>
-                    }
-                    {this.state.happy_outdoors !== '' &&
-                     <li>{this.state.happy_outdoors}</li>
-                    }
-                    {this.state.happy_sleep !== '' &&
-                     <li>{this.state.happy_sleep}</li>
-                    }
-                    {this.state.stress_excersie !== '' &&
-                     <li>{this.state.stress_excersie}</li>
-                    }
-                    {this.state.stress_outdoors !== '' &&
-                     <li>{this.state.stress_outdoors}</li>
-                    }
-                    {this.state.stress_sleep !== '' &&
-                     <li>{this.state.stress_sleep}</li>
-                    }
                 </ul> 
                         
                 </div>
