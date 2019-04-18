@@ -124,7 +124,6 @@ class Report extends Component {
           console.log(error);
         });
         this.trends()
-
     }
 
     trends(){
@@ -277,33 +276,45 @@ class Report extends Component {
                 </div>{/* container */}
                 <div className = "correlations">
                 <h2 id = "cor" >Correlations on activites and moods</h2>
-                
-                 <ul className="cor">
-                    <li>
-                    <h3>Happiness and exercise</h3>
-                    <p> {this.state.happy_exercise}</p>
-                    </li>
-                    <li>
-                    <h3>
-                    <p>Happiness and outdoors</p>
-                    </h3>{this.state.happy_outdoors}</li>
-                    <li>
-                    <h3>Happiness and sleep</h3>
-                    <p>{this.state.happy_sleep} </p>
-                    </li>
-                    <li>
-                    <h3>Stress and exercise </h3>
-                    <p> {this.state.stress_exercise}</p>
-                    </li>
-                    <li>
-                    <h3>Stress and sleep</h3>
-                    <p>{this.state.stress_sleep}</p>
-                    </li>
-                    <li>
-                    <h3>Stress and outdoors</h3>
-                    <p>{this.state.stress_outdoors}</p>
-                    </li>
 
+                <ul className="cor">
+                    {this.state.happy_exercise !== 'Your happiness and exercise have not been found to be correlated' &&
+                        <li>
+                        <h3>Happiness and exercise</h3>
+                        <p> {this.state.happy_exercise}</p>
+                        </li>
+                    }
+                    {this.state.happy_outdoors !== 'Your happiness and outdoor time have not been found to be correlated' &&
+                        <li>
+                        <h3>
+                        <p>Happiness and outdoors</p>
+                        </h3>{this.state.happy_outdoors}
+                        </li>
+                    }
+                    {this.state.happy_sleep !== 'Your happiness and sleep have not been found to be correlated' &&
+                        <li>
+                        <h3>Happiness and sleep</h3>
+                        <p>{this.state.happy_sleep} </p>
+                        </li>
+                    }
+                    {this.state.stress_exercise !== 'Your stress and exercise have not been found to be correlated' &&
+                        <li>
+                        <h3>Stress and exercise </h3>
+                        <p> {this.state.stress_exercise}</p>
+                        </li>
+                    }
+                    {this.state.stress_sleep !== 'Your stress and sleep have not been found to be correlated' &&
+                        <li>
+                        <h3>Stress and sleep</h3>
+                        <p>{this.state.stress_sleep}</p>
+                        </li>
+                    }
+                    {this.state.stress_outdoors !== 'Your stress and outdoor have not been found to be correlated' &&
+                        <li>
+                        <h3>Stress and outdoors</h3>
+                        <p>{this.state.stress_outdoors}</p>
+                        </li>
+                    }
                 </ul> 
                         
                 </div>
