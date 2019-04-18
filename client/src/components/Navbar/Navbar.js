@@ -53,7 +53,7 @@ class Navbar extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
           <a className="navbar-brand" href="/">
-            <img
+            {/* <img
               src={logo}
               className="logo"
               alt="{logo}"
@@ -61,8 +61,8 @@ class Navbar extends Component {
               onClick={() =>
                 scrollToComponent(this.Jumbotron, { offset: 0, duration: 1500 })
               }
-            />
-            TherapyJournal
+            /> */}
+            Journaly
           </a>
           <button
             className="navbar-toggler"

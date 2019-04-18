@@ -1,16 +1,13 @@
-.past-journal {
-    border: 1px;
-    padding: 20px; 
-}
 
-.past-header{
+
+/* .past-header{
     position: fixed;
-}
+} */
 .page {
     padding: 20px;
 }
 .scroll {
-    padding-top: 70px;
+    padding-top: 10px;
     display: flex;
     min-width: 100%;
     min-height: 200px;
