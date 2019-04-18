@@ -117,7 +117,7 @@ class Journal extends Component {
     console.log("negsum: ", negsum);
     console.log("possum: ", possum);
   }
-    
+
 
 	render() {
 		return (
@@ -282,7 +282,7 @@ class Journal extends Component {
         {this.state.success && (
           <Redirect
             to={{
-              pathname: "/feedback"
+              pathname: "/pastjournals"
             }}
           />
         )}
