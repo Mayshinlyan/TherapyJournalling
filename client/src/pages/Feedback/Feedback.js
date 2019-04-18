@@ -23,6 +23,7 @@ class Feedback extends Component {
 
                     <div className='jumbotron'>
                     <h1>My Feedback</h1>
+                    
                     </div>
                 </div>
         </div>
