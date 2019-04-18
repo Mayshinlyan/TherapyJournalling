@@ -196,11 +196,15 @@ class Report extends Component {
                             type: 'scatter',
                             mode: 'lines+markers',
                             marker: {color: '#FBD558', symbol: 'diamond'},
-                            line: {color: '#33A1FB'},
-                            
+                            line: {color: '#33A1FB'}, 
                         }]}
-                        layout={{width: 600, height: 400, title: 'Happiness', 
-                        xaxis: {showgrid: false}, yaxis: {showgrid: false}}}
+                        layout={
+                            {
+                                width: 600, height: 400, title: 'Happiness', 
+                                xaxis: {showgrid: false, title: {text: "Journal Entry #"}},
+                                yaxis: {title: {text: "Happiness Measure"}}
+                            }
+                        }
                     />
                 </div>
                 <div className="plot-container">
@@ -216,8 +220,13 @@ class Report extends Component {
                             line: {color: '#33A1FB'},
                             
                         }]}
-                        layout={{width: 600, height: 400, title: 'Anger', 
-                        xaxis: {showgrid: false}, yaxis: {showgrid: false}}}
+                        layout={
+                            {
+                                width: 600, height: 400, title: 'Anger', 
+                                xaxis: {showgrid: false, title: {text: "Journal Entry #"}},
+                                yaxis: {title: {text: "Anger Measure"}}
+                            }
+                        }
                     />
                 </div>
                 <div className="plot-container">
@@ -233,8 +242,13 @@ class Report extends Component {
                             line: {color: '#33A1FB'},
                             
                         }]}
-                        layout={{width: 600, height: 400, title: 'Stress', 
-                        xaxis: {showgrid: false}, yaxis: {showgrid: false}}}
+                        layout={
+                            {
+                                width: 600, height: 400, title: 'Stress', 
+                                xaxis: {showgrid: false, title: {text: "Journal Entry #"}},
+                                yaxis: {title: {text: "Stress Measure"}}
+                            }
+                        }
                     />
                 </div>
                 <div className="plot-container">
@@ -250,8 +264,13 @@ class Report extends Component {
                             line: {color: '#33A1FB'},
                             
                         }]}
-                        layout={{width: 600, height: 400, title: 'Sleep', 
-                        xaxis: {showgrid: false}, yaxis: {showgrid: false}}}
+                        layout={
+                            {
+                                width: 600, height: 400, title: 'Sleep', 
+                                xaxis: {showgrid: false, title: {text: "Journal Entry #"}},
+                                yaxis: {title: {text: "Sleep Measure"}}
+                            }
+                        }
                     />
                 </div>
                 </div>{/* container */}
