@@ -127,6 +127,8 @@ class Journal extends Component {
 				<h1>Create an entry</h1>
 				<form onSubmit={this.submitJournal}>
 				<h2>How were your mood levels today?</h2>
+        <div className = "tag">
+          <div>Hapiness</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -139,6 +141,10 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          </div>
+
+          <div className = "tag">
+          <div>Stress Level</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -151,6 +157,10 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          </div>
+
+          <div className = "tag">
+          <div>Angriness</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -163,7 +173,11 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          </div>
+
           <h2> How did you sleep?</h2>
+          <div className = "tag">
+          <div>Poorly -> Well</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -176,6 +190,9 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          </div>
+          <br/>
+          <h2>Click what you did today</h2>
           <ul className="journal-icons">
             <li className="journal-icon">
               <div className="checkcontainer">
@@ -258,6 +275,7 @@ class Journal extends Component {
               </div>
             </li>
           </ul>
+          <h2>Enter your journal here:</h2>
           <div>
             <textarea
               autoFocus

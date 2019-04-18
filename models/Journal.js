@@ -21,7 +21,7 @@ const journalSchema = new Schema({
   },
   journalText: {
     type: String,
-    required: true
+    required: false
   },
   happiness: {
     type: Number,

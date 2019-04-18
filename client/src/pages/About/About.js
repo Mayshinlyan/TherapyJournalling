@@ -32,28 +32,26 @@ function About(props) {
                 <p>Journaly is not meant to be a replacement to traditional therapy, but rather an additional tool to utilize. </p>
                 <p>Some resources related to suicide prevention, finding a therapist, and other crisis-related resources are listed below.</p>
 
-                <dl >
+                <dl>
                   <dt>National Suicide Prevention Lifeline:</dt>
                       <dd>1-800-273-TALK (8255), Veterans Press 1</dd>
                   <dt>Crisis Text Line: </dt>
                       <dd>Text TALK to 741741</dd>
                   <dt>IMAlive.org Instant Message Crisis: </dt>
-                      <dd><a href="IMAlive.org">IMAlive.org</a></dd>
+                      <dd><a href="http://IMAlive.org">IMAlive.org</a></dd>
                   <dt>The Trevor Project: </dt>
                       <dd>Call: 1-866-488-7386</dd>
                       <dd>Trevor Text: Text TREVOR to 1-202-304-1200</dd>
-                      <dd>Trevor Chat: <a href="www.thetrevorproject.org">www.thetrevorproject.org</a></dd>
+                      <dd>Trevor Chat: <a href="http://www.thetrevorproject.org">www.thetrevorproject.org</a></dd>
                   <dt>RAINN (National Sexual Assault Hotline): </dt>
                       <dd>Call: 1-800-656-4673</dd>
-                      <dd>Chat: <a href="hotline.rainn.org">hotline.rainn.org</a></dd>
+                      <dd>Chat: <a href="http://hotline.rainn.org">hotline.rainn.org</a></dd>
                   <dt>National Eating Disorders Association: 1-800-931-2237</dt>
-                      <dd>Chat: <a href="www.myneda.org">www.myneda.org</a></dd>
+                      <dd>Chat: <a href="http://www.myneda.org">www.myneda.org</a></dd>
                   <dt>Find a Therapist</dt>
                   
-                <dd>Association for Behavioral and Cognitive Therapies – Find a Therapist: 
-                  <a href="http://www.findcbt.org/FAT/">www.findcbt.org/FAT</a></dd>
-                <dd>Anxiety and Depression Association of America – Find a Therapist: 
-                  <a href="https://adaa.org/netforum/findatherapist">adaa.org/netforum/findatherapist</a></dd>
+                <dd>Association for Behavioral and Cognitive Therapies–<br></br> Find a Therapist: <a href="http://www.findcbt.org/FAT/">www.findcbt.org/FAT</a></dd>
+                <dd>Anxiety and Depression Association of America–<br></br> Find a Therapist: <a href="https://adaa.org/netforum/findatherapist">adaa.org/netforum/findatherapist</a></dd>
                 </dl>
               </div>
           </div>
