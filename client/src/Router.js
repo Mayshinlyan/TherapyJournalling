@@ -8,7 +8,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import Profile from "./pages/Profile/Profile";
 import Journal from "./pages/Journal/Journal";
 import PastJournals from "./pages/PastJournals/PastJournals";
-import Feedback from "./pages/Feedback/Feedback";
+import ViewJournal from "./pages/ViewJournal/ViewJournal";
 import Report from "./pages/Report/Report";
 
 class Routes extends Component {
@@ -95,12 +95,12 @@ class Routes extends Component {
           />
           <Route
             exact
-            path="/feedback"
+            path="/journal/:shortId"
             render={props =>
               this.state.user ? (
-                <Feedback user={this.state.user} {...props} />
+                <ViewJournal user={this.state.user} {...props} />
               ) : (
-                <Redirect to="/" />
+                <ViewJournal {...props} />
               )
             }
           />

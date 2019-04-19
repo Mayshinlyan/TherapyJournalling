@@ -2,6 +2,15 @@
   font-family: 'Noto Serif TC', serif;
 } */
 
+
+.tag {
+  display: flex;
+  /* width: 100%; */
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
+  align-items: baseline;
+}
+
 .slidecontainer {
     width: 100%;
   }
