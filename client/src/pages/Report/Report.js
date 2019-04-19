@@ -138,9 +138,10 @@ class Report extends Component {
   trends() {
     var Correlation = require("node-correlation");
     var happy = this.state.happyY;
-    var exercise = this.state.exercise;
-    var sleep = this.state.sleepY;
     var stress = this.state.stressedY;
+    var sleep = this.state.sleepY;
+
+    var exercise = this.state.exercise;
     var outdoors = this.state.sun;
 
     var happy_exercise = Correlation.calc(happy, exercise);
@@ -149,7 +150,7 @@ class Report extends Component {
     var stress_exercise = Correlation.calc(stress, exercise);
     var stress_sleep = Correlation.calc(stress, sleep);
     var stress_outdoors = Correlation.calc(stress, outdoors);
-    var retStr = "";
+
     if (Math.abs(happy_exercise) > 0.5) {
       this.setState({
         happy_exercise:
