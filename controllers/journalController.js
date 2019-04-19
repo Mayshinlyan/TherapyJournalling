@@ -3,6 +3,8 @@ const journalController = {};
 const ids = require("short-id");
 
 journalController.submitJournal = (req, res) => {
+  var reterr = '';
+
   const {
     username,
     _jtext,
@@ -63,6 +65,7 @@ journalController.submitJournal = (req, res) => {
       }
     }
   };
+
   nlu.analyze(options)
     .then(analysisResults => {
       emotion = analysisResults.emotion.document.emotion;
@@ -82,10 +85,34 @@ journalController.submitJournal = (req, res) => {
         computer: computer,
         tsadness: emotion.sadness,
         tjoy: emotion.joy,
-        tfear: emotion.fear,
+        tfear:  emotion.fear,
         tdisgust: emotion.disgust,
         tanger: emotion.anger,
         tsentiment: analysisResults.sentiment.document.score
+      });
+      console.log(JSON.stringify(newJournal));
+      newJournal.save(function(err, newJournal) {
+        if (err) return console.error(err); // TODO: handle error
+      });
+      return res.status(200).json({
+        success: true,
+        shorttext: false,
+      });
+    })
+    .catch(err => {
+      var newJournal = new models.Journal({
+        shortId,
+        username: username,
+        journalText: _jtext,
+        happiness: happiness,
+        angriness: angriness,
+        stressValue: stressValue,
+        sleepValue: sleepValue,
+        exercise: exercise,
+        nap: nap,
+        coffee: coffee,
+        sun: sun,
+        computer: computer,
       });
 
       console.log(JSON.stringify(newJournal));
@@ -93,11 +120,9 @@ journalController.submitJournal = (req, res) => {
         if (err) return console.error(err); // TODO: handle error
       });
       return res.status(200).json({
-        success: true
+        success: true,
+        shorttext: true,
       });
-    })
-    .catch(err => {
-      console.log('error:', err);
     });
 
   // newJournal

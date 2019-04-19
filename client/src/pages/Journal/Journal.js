@@ -76,6 +76,9 @@ class Journal extends Component {
       })
       .then(response => {
         console.log(response);
+        if (response.data.shorttext == true) {
+          alert('Submitted text is too short to be analyzed. Journal saved successfully.');
+        }
         this.setState({ success: true });
         // TODO: tell user the journal is submitted; redirect somewhere
       })
