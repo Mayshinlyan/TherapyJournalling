@@ -26,28 +26,78 @@ journalController.submitJournal = (req, res) => {
     shortId = ids.generate();
   }
 
-  var newJournal = new models.Journal({
-    shortId,
-    username: username,
-    journalText: _jtext,
-    happiness: happiness,
-    angriness: angriness,
-    stressValue: stressValue,
-    sleepValue: sleepValue,
-    exercise: exercise,
-    nap: nap,
-    coffee: coffee,
-    sun: sun,
-    computer: computer
-  });
   console.log("helloooooooo");
-  console.log(JSON.stringify(newJournal));
-  newJournal.save(function(err, newJournal) {
-    if (err) return console.error(err); // TODO: handle error
+  'use strict';
+  var NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1.js');
+  var ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
+  var toneAnalyzer = new ToneAnalyzerV3({
+    "version": '2017-09-21',
+    "url": 'https://gateway.watsonplatform.net/tone-analyzer/api/'
   });
-  return res.status(200).json({
-    success: true
+
+  // toneAnalyzer.tone(
+  //   {
+  //     tone_input: 'One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.',
+  //     content_type: 'text/plain'
+  //   },
+  //   function(err, tone) {
+  //     if (err) {
+  //       console.log(err);
+  //     } else {
+  //       console.log('tone endpoint:');
+  //       console.log(JSON.stringify(tone, null, 2));
+  //     }
+  //   }
+  // );
+  var nlu = new NaturalLanguageUnderstandingV1({
+    version: '2018-04-05',
+    url: 'https://gateway.watsonplatform.net/natural-language-understanding/api/'
   });
+  let emotion = null;
+  var options = {
+    text: _jtext,
+    features: {
+      'sentiment': {},
+      'emotion': {
+        'document': true
+      }
+    }
+  };
+  nlu.analyze(options)
+    .then(analysisResults => {
+      emotion = analysisResults.emotion.document.emotion;
+
+      var newJournal = new models.Journal({
+        shortId,
+        username: username,
+        journalText: _jtext,
+        happiness: happiness,
+        angriness: angriness,
+        stressValue: stressValue,
+        sleepValue: sleepValue,
+        exercise: exercise,
+        nap: nap,
+        coffee: coffee,
+        sun: sun,
+        computer: computer,
+        tsadness: emotion.sadness,
+        tjoy: emotion.joy,
+        tfear: emotion.fear,
+        tdisgust: emotion.disgust,
+        tanger: emotion.anger
+      });
+
+      console.log(JSON.stringify(newJournal));
+      newJournal.save(function(err, newJournal) {
+        if (err) return console.error(err); // TODO: handle error
+      });
+      return res.status(200).json({
+        success: true
+      });
+    })
+    .catch(err => {
+      console.log('error:', err);
+    });
 
   // newJournal
   //   .save()

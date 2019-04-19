@@ -66,6 +66,26 @@ const journalSchema = new Schema({
   computer: {
     type: Boolean,
     defaul: false
+  },
+  tsadness: {
+    type: Number,
+    required: false
+  },
+  tjoy: {
+    type: Number,
+    required: false
+  },
+  tfear: {
+    type: Number,
+    required: false
+  },
+  tdisgust: {
+    type: Number,
+    required: false
+  },
+  tanger: {
+    type: Number,
+    required: false
   }
 });
 
