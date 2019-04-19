@@ -26,18 +26,12 @@ class Report extends Component {
       wordRotate: null,
       fontSizeMapper: null,
       wordFreq: [],
-      happy_exercise:
-        "Your happiness and exercise have not been found to be correlated",
-      happy_outdoors:
-        "Your happiness and outdoor time have not been found to be correlated",
-      happy_sleep:
-        "Your happiness and sleep have not been found to be correlated",
-      stress_exercise:
-        "Your stress and exercise have not been found to be correlated",
-      stress_outdoors:
-        "Your stress and outdoor have not been found to be correlated",
-      stress_sleep:
-        "Your stress and sleep have not been found to be correlated",
+      happy_exercise: '',
+      happy_outdoors : '',
+      happy_sleep: '',
+      stress_exercise: '',
+      stress_outdoors: '',
+      stress_sleep: '',
       correlations: [],
       exercise: [],
       nap: [],
@@ -139,7 +133,6 @@ class Report extends Component {
       .catch(error => {
         console.log(error);
       });
-    this.trends();
   }
 
   trends() {
@@ -304,64 +297,66 @@ class Report extends Component {
           </div>
         </div>
         {/* container */}
-        <div className="correlations">
-          <h2 id="cor">Correlations on activites and moods</h2>
+        <div className = "correlations">
+                <h2 id = "cor" >Correlations on activites and moods</h2>
+                
+                {this.state.happy_exercise === '' && this.state.happy_outdoors === '' && this.state.happy_sleep === '' && 
+                this.state.stress_exercise === '' && this.state.stress_outdoors === '' && this.state.stress_sleep === '' ? 
+                <div className="no-data">There are currently no correlations to show.</div> :
 
-          <ul className="cor">
-            {this.state.happy_exercise !==
-              "Your happiness and exercise have not been found to be correlated" && (
-              <li>
-                <h3>Happiness and exercise</h3>
-                <p> {this.state.happy_exercise}</p>
-              </li>
-            )}
-            {this.state.happy_outdoors !==
-              "Your happiness and outdoor time have not been found to be correlated" && (
-              <li>
-                <h3>
-                  <p>Happiness and outdoors</p>
-                </h3>
-                {this.state.happy_outdoors}
-              </li>
-            )}
-            {this.state.happy_sleep !==
-              "Your happiness and sleep have not been found to be correlated" && (
-              <li>
-                <h3>Happiness and sleep</h3>
-                <p>{this.state.happy_sleep} </p>
-              </li>
-            )}
-            {this.state.stress_exercise !==
-              "Your stress and exercise have not been found to be correlated" && (
-              <li>
-                <h3>Stress and exercise </h3>
-                <p> {this.state.stress_exercise}</p>
-              </li>
-            )}
-            {this.state.stress_sleep !==
-              "Your stress and sleep have not been found to be correlated" && (
-              <li>
-                <h3>Stress and sleep</h3>
-                <p>{this.state.stress_sleep}</p>
-              </li>
-            )}
-            {this.state.stress_outdoors !==
-              "Your stress and outdoor have not been found to be correlated" && (
-              <li>
-                <h3>Stress and outdoors</h3>
-                <p>{this.state.stress_outdoors}</p>
-              </li>
-            )}
-          </ul>
-        </div>
-        <div className="wordCloud" id="cloud">
-          <h2> Word Cloud </h2>
-          <WordCloud
-            data={this.state.wordFreq}
-            fontSizeMapper={this.state.fontSizeMapper}
-            rotate={this.state.wrodRotate}
-          />
-        </div>
+                <ul className="cor">
+                {this.state.happy_exercise !== '' &&
+                    <li>
+                    <h3>Happiness and exercise</h3>
+                    <p> {this.state.happy_exercise}</p>
+                    </li>
+                }
+                {this.state.happy_outdoors !== '' &&
+                    <li>
+                    <h3>
+                    <p>Happiness and outdoors</p>
+                    </h3>{this.state.happy_outdoors}
+                    </li>
+                }
+                {this.state.happy_sleep !== '' &&
+                    <li>
+                    <h3>Happiness and sleep</h3>
+                    <p>{this.state.happy_sleep} </p>
+                    </li>
+                }
+                {this.state.stress_exercise !== '' &&
+                    <li>
+                    <h3>Stress and exercise </h3>
+                    <p> {this.state.stress_exercise}</p>
+                    </li>
+                }
+                {this.state.stress_sleep !== '' &&
+                    <li>
+                    <h3>Stress and sleep</h3>
+                    <p>{this.state.stress_sleep}</p>
+                    </li>
+                }
+                {this.state.stress_outdoors !== '' &&
+                    <li>
+                    <h3>Stress and outdoors</h3>
+                    <p>{this.state.stress_outdoors}</p>
+                    </li>
+                }
+                </ul> 
+                }
+        
+                </div>
+                <div className = "wordCloud" id ="cloud">
+                <h2> Word Cloud </h2>
+                {this.state.wordFreq.length <= 1 ? 
+                <div className="no-data">There is currently no journal data to show.</div> : 
+                <WordCloud
+                      data={this.state.wordFreq}
+                      fontSizeMapper={this.state.fontSizeMapper}
+                      rotate={this.state.wrodRotate}
+                    />
+                }  
+                </div>
 
         <Footer />
       </div>

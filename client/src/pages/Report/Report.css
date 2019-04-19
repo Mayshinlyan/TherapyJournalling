@@ -54,3 +54,7 @@
     border-radius: 2%;
     padding:10px;
   }
+
+  .no-data {
+    margin-bottom: 25px;
+  }
