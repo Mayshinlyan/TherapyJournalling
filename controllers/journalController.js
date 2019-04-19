@@ -84,7 +84,8 @@ journalController.submitJournal = (req, res) => {
         tjoy: emotion.joy,
         tfear: emotion.fear,
         tdisgust: emotion.disgust,
-        tanger: emotion.anger
+        tanger: emotion.anger,
+        tsentiment: analysisResults.sentiment.document.score
       });
 
       console.log(JSON.stringify(newJournal));

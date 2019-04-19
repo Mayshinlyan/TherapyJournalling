@@ -86,6 +86,10 @@ const journalSchema = new Schema({
   tanger: {
     type: Number,
     required: false
+  },
+  tsentiment: { // this could be negative or positive
+    type: Number,
+    required: false
   }
 });
 
