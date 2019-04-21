@@ -3,6 +3,7 @@ import "./PastJournals.css";
 import axios from "axios";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import Utility from "../../Utility";
 
 class PastJournals extends Component {
   constructor(props) {
@@ -48,9 +49,13 @@ class PastJournals extends Component {
               return (
                 <div className="past-journal" key={jid}>
                   <a href={"/journal/" + journal.shortId}>
-                    <div>Created on: {journal.createdAt}</div>
+                    <div>
+                      {Utility.parseDate(journal.createdAt).month}/
+                      {Utility.parseDate(journal.createdAt).date}/
+                      {Utility.parseDate(journal.createdAt).year}
+                    </div>
                     <br />
-                    <div>Journal text: {journal.journalText}</div>
+                    <div>Journal: {journal.journalText}</div>
                   </a>
                 </div>
               );
