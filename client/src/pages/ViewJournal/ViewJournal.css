@@ -1,0 +1,14 @@
+.sliders {
+    margin-top: auto;
+    background: #fbd558;
+    min-width: 350px;
+    margin: 10px;
+    padding: 20px;
+    padding-bottom: 30px;
+    color: black;
+    overflow-y: auto;
+    display: flex;
+  }
+  li{
+    list-style-type:none;
+  }

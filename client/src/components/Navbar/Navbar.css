@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto|Varela+Round");
 
 .navbar {
-  background-color: transparent !important;
+  /* background-color: transparent !important; */
+  /* add bg-light class back to navbar to change back to grey */
+  background-color: #FBD558; 
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   z-index: 3;
   position: fixed !important;
@@ -11,12 +13,13 @@
 }
 
 .navbar-brand{
-  font-family: 'Raleway';
-  font-weight: bold;
-  color: #771313;
+  font-family:  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  color: rgb(72, 72, 72) !important;
   margin-left: 1em;
   vertical-align: middle;
-  padding-top: 0.4em
+  padding-top: 0.4em;
+  font-size: 1.5em !important;
+
 }
 
 
@@ -37,7 +40,7 @@
 }
 
 .active {
-  color: orange !important;
+  color: white !important;
 }
 
 .left {

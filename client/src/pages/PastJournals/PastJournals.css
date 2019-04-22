@@ -1,0 +1,32 @@
+
+
+/* .past-header{
+    position: fixed;
+} */
+.page {
+    padding: 20px;
+}
+.scroll {
+    padding-top: 10px;
+    display: flex;
+    min-width: 100%;
+    min-height: 200px;
+    max-height: 500px;
+    font-family: 'Montserrat', sans-serif;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .past-journal {
+    margin-top: auto;
+    background: #fbd558;
+    min-width: 350px;
+    margin: 10px;
+    padding: 20px;
+    padding-bottom: 30px;
+    color: black;
+    border-radius: 10%;
+    overflow-y: auto;
+  }

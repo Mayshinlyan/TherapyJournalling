@@ -1,0 +1,15 @@
+.resources {
+    border: 3px solid;
+    border-color: lightgrey;
+    border-radius: 2%;
+    padding:10px;
+  }
+
+  .about-p {
+      line-height: 2;
+  }
+
+  .about-h2 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
