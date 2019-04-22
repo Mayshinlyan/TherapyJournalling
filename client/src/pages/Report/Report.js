@@ -226,7 +226,7 @@ class Report extends Component {
                 height: 400,
                 title: "Happiness",
                 xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Happiness Measure" } }
+                yaxis: { title: { text: "Happiness Measure" }, range: [0, 100] }
               }}
             />
           </div>
@@ -248,7 +248,7 @@ class Report extends Component {
                 height: 400,
                 title: "Anger",
                 xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Anger Measure" } }
+                yaxis: { title: { text: "Anger Measure" }, range: [0, 100] }
               }}
             />
           </div>
@@ -270,7 +270,7 @@ class Report extends Component {
                 height: 400,
                 title: "Stress",
                 xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Stress Measure" } }
+                yaxis: { title: { text: "Stress Measure" }, range: [0, 100] }
               }}
             />
           </div>
@@ -292,7 +292,7 @@ class Report extends Component {
                 height: 400,
                 title: "Sleep",
                 xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Sleep Measure" } }
+                yaxis: { title: { text: "Sleep Quality" }, range: [0, 100] }
               }}
             />
           </div>
