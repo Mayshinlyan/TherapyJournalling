@@ -84,7 +84,19 @@ class ViewJournal extends Component {
     if (happy<25) {
       this.setState({
         happy:
-          "You dont seem very happy today. Try checking out these resourses: ____"
+          "You dont seem very happy today. Try checking out this therapy resourse: https://www.adaa.org/netforum/findatherapist"
+      });
+    }
+    else if (happy<50) {
+      this.setState({
+        happy:
+          "You dont seem very happy today."
+      });
+    }
+    else if (happy<75) {
+      this.setState({
+        happy:
+          "You happiness is okay today."
       });
     }
     console.log(this.state.happynum);
@@ -96,7 +108,19 @@ class ViewJournal extends Component {
     if (angry>75) {
       this.setState({
         angry:
-          "You seem very angry today. Maybe try mediattion or listening to calming music. You can also try checking out these resourses: ____"
+          "You seem very angry today. Maybe try mediattion or listening to calming music."
+      });
+    }
+    else if (angry>50) {
+      this.setState({
+        angry:
+          "You seem pretty angry today. Maybe try mediattion or listening to calming music."
+      });
+    }
+    else if (angry>25) {
+      this.setState({
+        angry:
+          "You dont seem too angry today."
       });
     }
     console.log(angry);
@@ -108,7 +132,19 @@ class ViewJournal extends Component {
     if (stress>75) {
       this.setState({
         stress:
-          "You seem very stressed today. Maybe try mediattion. You can also try checking out these resourses: ____"
+          "You seem very stressed today. Maybe try mediattion. You can also try checking out these resourses: https://www.adaa.org/netforum/findatherapist"
+      });
+    }
+    else if (stress>50) {
+      this.setState({
+        stress:
+          "You seem very stressed today. Maybe try mediattion."
+      });
+    }
+    else if (stress>25) {
+      this.setState({
+        stress:
+          "You dont seem too stressed today."
       });
     }
     console.log(stress);
@@ -120,7 +156,19 @@ class ViewJournal extends Component {
     if (sleep<25) {
       this.setState({
         sleep:
-          "You didn't sleep very well today. Try turning off all screens 1 hour before bed or meditation. You can also try checking out these resourses: ____"
+          "You didn't sleep very well today. Try turning off all screens 1 hour before bed or meditation. You can also try checking out these resourses: https://www.sleepassociation.org/"
+      });
+    }
+    else if (sleep<50) {
+      this.setState({
+        sleep:
+          "You didn't sleep very well today. Try turning off all screens 1 hour before bed or meditation."
+      });
+    }
+    else if (sleep<75) {
+      this.setState({
+        sleep:
+          "Your sleep seems okay today."
       });
     }
     console.log(sleep);
@@ -139,12 +187,15 @@ class ViewJournal extends Component {
             {/* journal */}
             <div className="">
               <h1>{journal.username}'s Journal</h1>
+              <br/>
               <p className="">
                 {Utility.parseDate(journal.createdAt).month}/
                 {Utility.parseDate(journal.createdAt).date}/
                 {Utility.parseDate(journal.createdAt).year}
               </p>
               
+              <p>{journal.journalText}</p>
+
               <h2>Feedback:</h2>
 
               <div className="sliders">
@@ -173,7 +224,6 @@ class ViewJournal extends Component {
               </div>
 
               
-              <p>{journal.journalText}</p>
             </div>
 
             
