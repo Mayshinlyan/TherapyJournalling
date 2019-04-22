@@ -67,7 +67,6 @@ class ViewJournal extends Component {
     axios
       .get("/api/journal/" + shortId)
       .then(response => {
-        console.log("helllooo" + response.data);
         return this.setState({
           journal: response.data
         });
@@ -84,7 +83,7 @@ class ViewJournal extends Component {
     if (happy<25) {
       this.setState({
         happy:
-          "You dont seem very happy today. Try checking out these resourses: ____"
+          "You dont seem very happy today. Try checking out these resources: ____"
       });
     }
     console.log(this.state.happynum);
