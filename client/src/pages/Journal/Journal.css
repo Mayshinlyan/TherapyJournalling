@@ -88,8 +88,8 @@ input[type="checkbox"]{
   transition: .5s ease;
 }
 
-.checkcontainer:hover .overlay {
-  opacity: 1;
+.checkcontainer:hover {
+  opacity: 0.7;
 }
 .checkcontainer {
   position: relative;
@@ -129,7 +129,7 @@ textarea {
   margin-right: 29px;
 }
 .calm {
-  margin-right: 21px;
+  margin-right: 20px;
 }
 .poorly {
   margin-right: 13px;
