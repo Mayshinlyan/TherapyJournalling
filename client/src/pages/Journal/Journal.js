@@ -35,7 +35,7 @@ class Journal extends Component {
         }
         this.submitJournal = this.submitJournal.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.wordValue = this.wordValue.bind(this);
+        // this.wordValue = this.wordValue.bind(this);
     }
 
   componentWillMount() {
@@ -75,7 +75,6 @@ class Journal extends Component {
         computer
       })
       .then(response => {
-        console.log(response);
         if (response.data.shorttext === true) {
           alert('Submitted text is too short to be analyzed. Journal saved successfully.');
         }
@@ -97,26 +96,26 @@ class Journal extends Component {
     });
   }
 
-  wordValue() {
-    const { _jtext}  = this.state;
-    var afinn = require('afinn-165');
-    var words = _jtext.split(" ");
-    var i;
-    var sum = 0;
-    var negsum = 0;
-    var possum = 0;
-    for (i = 0; i < words.length; i++){
-        if (afinn[words[i]] !== undefined) {
-          sum += afinn[words[i]];
-        }
-        if (afinn[words[i]]>0){
-              possum++;
-        }
-        if (afinn[words[i]]<0) {
-            negsum++;
-        }
-    }
-  }
+  // wordValue() {
+  //   const { _jtext}  = this.state;
+  //   var afinn = require('afinn-165');
+  //   var words = _jtext.split(" ");
+  //   var i;
+  //   var sum = 0;
+  //   var negsum = 0;
+  //   var possum = 0;
+  //   for (i = 0; i < words.length; i++){
+  //       if (afinn[words[i]] !== undefined) {
+  //         sum += afinn[words[i]];
+  //       }
+  //       if (afinn[words[i]]>0){
+  //             possum++;
+  //       }
+  //       if (afinn[words[i]]<0) {
+  //           negsum++;
+  //       }
+  //   }
+  // }
 
 
 	render() {
@@ -294,7 +293,7 @@ class Journal extends Component {
           <div>
             <button
               type="submit"
-              onClick={this.wordValue}
+              // onClick={this.wordValue}
               className="btn btn-dark w-100"
             >
               Submit
