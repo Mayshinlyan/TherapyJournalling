@@ -47,9 +47,9 @@ class SignIn extends Component {
       <div>
         <Navbar />
         <div
-          style={{ marginTop: "2em" }}
           className="modal-dialog w-25"
           role="document"
+          style={{ marginTop: "8em", marginBottom: "6.5em" }}
         >
           <div className="modal-content">
             <div className="modal-header">
