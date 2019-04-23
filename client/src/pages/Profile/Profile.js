@@ -77,7 +77,6 @@ class Profile extends Component {
   render() {
     const dbusername = this.state.user.username;
     const dbemail = this.state.user.email;
-    const { createdAt } = this.state.user;
     const { username, email, curPassword } = this.state;
     return (
       <div className="Top">

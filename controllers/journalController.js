@@ -27,8 +27,6 @@ journalController.submitJournal = (req, res) => {
     console.log(shortIdExists(shortId));
     shortId = ids.generate();
   }
-
-  console.log("helloooooooo");
   'use strict';
   var NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1.js');
   var ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
@@ -61,7 +59,7 @@ journalController.submitJournal = (req, res) => {
     features: {
       'sentiment': {},
       'emotion': {
-        'document': true
+      'document': true
       }
     }
   };
@@ -168,13 +166,11 @@ journalController.getAllUserJournals = (req, res) => {
  * get a single journal based on its shortid
  */
 journalController.getJournal = (req, res) => {
-  console.log("heheheh");
   const shortId = req.params.shortId;
   models.Journal.findOne({
     shortId: shortId
   })
     .then(result => {
-      //console.log(result);
       return res.json(result);
     })
     .catch(error => {

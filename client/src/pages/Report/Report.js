@@ -138,9 +138,10 @@ class Report extends Component {
   trends() {
     var Correlation = require("node-correlation");
     var happy = this.state.happyY;
-    var exercise = this.state.exercise;
-    var sleep = this.state.sleepY;
     var stress = this.state.stressedY;
+    var sleep = this.state.sleepY;
+
+    var exercise = this.state.exercise;
     var outdoors = this.state.sun;
 
     var happy_exercise = Correlation.calc(happy, exercise);
@@ -149,7 +150,7 @@ class Report extends Component {
     var stress_exercise = Correlation.calc(stress, exercise);
     var stress_sleep = Correlation.calc(stress, sleep);
     var stress_outdoors = Correlation.calc(stress, outdoors);
-    var retStr = "";
+
     if (Math.abs(happy_exercise) > 0.5) {
       this.setState({
         happy_exercise:
@@ -225,7 +226,7 @@ class Report extends Component {
                 height: 400,
                 title: "Happiness",
                 xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Happiness Measure" } }
+                yaxis: { title: { text: "Happiness Measure" }, range: [0, 100] }
               }}
             />
           </div>
@@ -247,7 +248,7 @@ class Report extends Component {
                 height: 400,
                 title: "Anger",
                 xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Anger Measure" } }
+                yaxis: { title: { text: "Anger Measure" }, range: [0, 100] }
               }}
             />
           </div>
@@ -269,7 +270,7 @@ class Report extends Component {
                 height: 400,
                 title: "Stress",
                 xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Stress Measure" } }
+                yaxis: { title: { text: "Stress Measure" }, range: [0, 100] }
               }}
             />
           </div>
@@ -291,7 +292,7 @@ class Report extends Component {
                 height: 400,
                 title: "Sleep",
                 xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Sleep Measure" } }
+                yaxis: { title: { text: "Sleep Quality" }, range: [0, 100] }
               }}
             />
           </div>

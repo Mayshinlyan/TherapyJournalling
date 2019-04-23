@@ -76,7 +76,7 @@ class Journal extends Component {
       })
       .then(response => {
         console.log(response);
-        if (response.data.shorttext == true) {
+        if (response.data.shorttext === true) {
           alert('Submitted text is too short to be analyzed. Journal saved successfully.');
         }
         this.setState({ success: true });
@@ -116,9 +116,6 @@ class Journal extends Component {
             negsum++;
         }
     }
-    console.log("sum: ", sum);
-    console.log("negsum: ", negsum);
-    console.log("possum: ", possum);
   }
 
 
@@ -131,7 +128,7 @@ class Journal extends Component {
 				<form onSubmit={this.submitJournal}>
 				<h2>How were your mood levels today?</h2>
         <div className = "tag">
-          <div>Hapiness</div>
+        <div className="sad">Sad</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -144,10 +141,11 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          <div className="end">Happy</div>
           </div>
 
           <div className = "tag">
-          <div>Stress Level</div>
+          <div>Relaxed</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -160,10 +158,11 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          <div className="end">Stressed</div>
           </div>
 
           <div className = "tag">
-          <div>Angriness</div>
+          <div className="calm">Calm</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -176,11 +175,12 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          <div className="end">Angry</div>
           </div>
 
           <h2> How did you sleep?</h2>
           <div className = "tag">
-          <div>Poorly -> Well</div>
+          <div className="poorly">Poorly</div>
           <div className="slidecontainer">
             <input
               type="range"
@@ -193,6 +193,7 @@ class Journal extends Component {
               value={this.state.value}
             />
           </div>
+          <div className="end">Well</div>
           </div>
           <br/>
           <h2>Click what you did today</h2>
@@ -210,7 +211,7 @@ class Journal extends Component {
                 <label htmlFor="exercise">
                   <img src={runicon1} alt="Run"/>
                 </label>
-                <div className="text"> Exercise</div>
+                <div className="text">Exercise</div>
               </div>
             </li>
             <li className="journal-icon">
@@ -226,7 +227,7 @@ class Journal extends Component {
                 <label htmlFor="nap">
                   <img src={sleepicon1} alt="Sleep"/>
                 </label>
-                <div className="text"> nap</div>
+                <div className="text">Nap</div>
               </div>
             </li>
             <li className="journal-icon">
@@ -242,7 +243,7 @@ class Journal extends Component {
                 <label htmlFor="coffee">
                   <img src={coffeeicon1} alt="Coffee"/>
                 </label>
-                <div className="text"> coffee</div>
+                <div className="text">Coffee</div>
               </div>
             </li>
             <li className="journal-icon">
@@ -258,7 +259,7 @@ class Journal extends Component {
                 <label htmlFor="sun">
                   <img src={sunicon1} alt="Sun"/>
                 </label>
-                <div className="text"> outdoors</div>
+                <div className="text"> Outdoors</div>
               </div>
             </li>
             <li className="journal-icon">
@@ -274,7 +275,7 @@ class Journal extends Component {
                 <label htmlFor="computer">
                   <img src={computericon1} alt="Computer"/>
                 </label>
-                <div className="text"> Computer</div>
+                <div className="text">Computer</div>
               </div>
             </li>
           </ul>
