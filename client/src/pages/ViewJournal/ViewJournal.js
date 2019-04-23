@@ -24,7 +24,6 @@ class ViewJournal extends Component {
         "Your stress level is good",
       sleep:
         "Your sleep level is good",
-      
     };
   }
 
@@ -43,10 +42,6 @@ class ViewJournal extends Component {
           stressnum: response.data.stressValue,
           sleepnum: response.data.sleepValue
         });
-        console.log(this.state.happynum);
-        console.log(this.state.angrynum);
-        console.log(this.state.stressnum);
-        console.log(this.state.sleepnum);
         this.happy();
         this.angry();
         this.stress();
@@ -98,7 +93,6 @@ class ViewJournal extends Component {
           "You happiness is okay today."
       });
     }
-    console.log(this.state.happynum);
   }
 
   angry() {
@@ -122,7 +116,6 @@ class ViewJournal extends Component {
           "You dont seem too angry today."
       });
     }
-    console.log(angry);
   }
 
   stress() {
@@ -146,7 +139,6 @@ class ViewJournal extends Component {
           "You dont seem too stressed today."
       });
     }
-    console.log(stress);
   }
 
   sleep() {
@@ -170,7 +162,6 @@ class ViewJournal extends Component {
           "Your sleep seems okay today."
       });
     }
-    console.log(sleep);
   }
 
 
@@ -183,7 +174,6 @@ class ViewJournal extends Component {
         <div className="Top">
           <Navbar />
           <div className="container">
-            {/* journal */}
             <div className="">
               <h1>{journal.username}'s Journal</h1>
               <br/>
@@ -221,8 +211,6 @@ class ViewJournal extends Component {
                   <p> {this.state.sleep}</p>
                   </li>
               </div>
-
-              
             </div>
 
             

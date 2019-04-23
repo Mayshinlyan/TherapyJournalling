@@ -2,11 +2,6 @@
     display: none;
 }
 
-.plot-container {
-    width: 50%; 
-    margin: 0 auto;
-}
-
 .wordCloud{
     width: 50%;
     margin: 0 auto;
@@ -57,4 +52,10 @@
 
   .no-data {
     margin-bottom: 25px;
+  }
+
+  .graph-comment {
+  
+    margin-top: 60px;
+    
   }
