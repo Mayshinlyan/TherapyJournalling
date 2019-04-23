@@ -34,7 +34,6 @@ class ViewJournal extends Component {
     axios
       .get("/api/journal/" + shortId)
       .then(response => {
-        console.log("helllooo" + response.data);
         this.setState({
           journal: response.data,
           happynum: response.data.happiness,

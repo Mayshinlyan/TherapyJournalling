@@ -12,6 +12,7 @@
     margin: 0 auto;
 }
 
+
 .reportNav, .cor {
     list-style-type: none;
     margin: 0;
@@ -55,7 +56,16 @@
   }
 
   .graph-comment {
-  
-    margin-top: 60px;
-    
+    margin-top: 90px;
+    /* border: 2px solid #fbd558; */
+    /* background-color: #BCE1FF; */
+    /* border-radius: 3%; */
+    padding-top: 20px;
+    margin-bottom: 100px;
+    line-height: 2.5;
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  }
+
+  .blue {
+    color: #33A1FB;
   }

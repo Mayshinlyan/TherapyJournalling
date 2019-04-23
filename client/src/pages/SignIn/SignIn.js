@@ -26,8 +26,6 @@ class SignIn extends Component {
       .post("/api/login", { username, password })
       .then(response => {
         this.setState({ success: true });
-        // todo: hash password
-        console.log(response);
         window.location.reload();
       })
       .catch(error => {

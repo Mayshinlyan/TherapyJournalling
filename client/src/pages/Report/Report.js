@@ -275,19 +275,19 @@ class Report extends Component {
               />
             </div>
             <div className="col-lg-6 graph-comment">
-                <div>This is your self-reported happiness measure, graphed over time.</div>
-                <div>Your maximum reported happiness level is {this.state.happyMax}.</div>
-                <div>Your minimum reported happiness level is {this.state.happyMin}.</div>
-                <div>Your average is {this.state.happyAvg}.</div>
+                <div>This is your self-reported <span className="blue">happiness</span> measure, graphed over time.</div>
+                <div>Your <span className="blue">maximum</span> reported happiness level is <span className="blue">{this.state.happyMax}</span>.</div>
+                <div>Your <span className="blue">minimum</span> reported happiness level is <span className="blue">{this.state.happyMin}</span>.</div>
+                <div>Your happiness average is <span className="blue">{this.state.happyAvg}</span>.</div>
             </div>
           </div>{/* row */}
           
           <div className="row">
             <div className="col-lg-6 graph-comment">
-                <div>This is your self-reported anger measure, graphed over time.</div>
-                <div>Your maximum reported anger level is {this.state.angryMax}.</div>
-                <div>Your minimum reported anger level is {this.state.angryMin}.</div>
-                <div>Your average is {this.state.angryAvg}.</div>
+                <div>This is your self-reported <span className="blue">anger</span> measure, graphed over time.</div>
+                <div>Your <span className="blue">maximum</span> reported anger level is <span className="blue">{this.state.angryMax}</span>.</div>
+                <div>Your <span className="blue">minimum</span> reported anger level is <span className="blue">{this.state.angryMin}</span>.</div>
+                <div>Your anger average is <span className="blue">{this.state.angryAvg}</span>.</div>
             </div>
             <div className="col-lg-6">
             <Plot
@@ -338,18 +338,18 @@ class Report extends Component {
               />
               </div>
               <div className="col-lg-6 graph-comment">
-                <div>This is your self-reported stress measure, graphed over time.</div>
-                <div>Your maximum reported stress level is {this.state.stressMax}.</div>
-                <div>Your minimum reported stress level is {this.state.stressMin}.</div>
-                <div>Your average is {this.state.stressAvg}.</div>
+                <div>This is your self-reported <span className="blue">stress</span> measure, graphed over time.</div>
+                <div>Your <span className="blue">maximum</span> reported stress level is {this.state.stressMax}.</div>
+                <div>Your <span className="blue">minimum</span> reported stress level is {this.state.stressMin}.</div>
+                <div>Your stress average is <span className="blue">{this.state.stressAvg}</span>.</div>
               </div>
             </div>{/* row */}
           <div className="row">
             <div className="col-lg-6 graph-comment">
-                <div>This is your self-reported happiness measure, graphed over time.</div>
-                <div>Your maximum reported happiness level is {this.state.sleepMax}.</div>
-                <div>Your minimum reported happiness level is {this.state.sleepMin}.</div>
-                <div>Your average is {this.state.sleepAvg}.</div>
+                <div>This is your self-reported <span className="blue">sleep</span> measure, graphed over time.</div>
+                <div>Your <span className="blue">maximum</span> reported sleep value is <span className="blue"></span>{this.state.sleepMax}.</div>
+                <div>Your <span className="blue">minimum</span> reported sleep value is <span className="blue"></span>{this.state.sleepMin}.</div>
+                <div>Your sleep average is <span className="blue">{this.state.sleepAvg}</span>.</div>
 
             </div>
             <div className="col-lg-6">
@@ -377,6 +377,8 @@ class Report extends Component {
           </div>{/* row */}
         </div>
         {/* container */}
+
+  
         <div className = "correlations">
                 <h2 id = "cor" >Correlations on activites and moods</h2>
                 
