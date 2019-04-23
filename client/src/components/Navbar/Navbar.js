@@ -53,15 +53,20 @@ class Navbar extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
           <a className="navbar-brand" href="/">
-            { <img
-              src={logo}
-              className="logo"
-              alt="{logo}"
-              width="60em"
-              onClick={() =>
-                scrollToComponent(this.Jumbotron, { offset: 0, duration: 1500 })
-              }
-            /> }
+            {
+              <img
+                src={logo}
+                className="logo"
+                alt="{logo}"
+                width="60em"
+                onClick={() =>
+                  scrollToComponent(this.Jumbotron, {
+                    offset: 0,
+                    duration: 1500
+                  })
+                }
+              />
+            }
             Journaly
           </a>
           <button
@@ -144,7 +149,7 @@ class Navbar extends Component {
                       })
                     }
                   >
-                    Report
+                    Your Progress
                   </NavLink>
                 </li>
               ) : (
