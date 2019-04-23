@@ -113,7 +113,7 @@ class ViewJournal extends Component {
     else if (angry>50) {
       this.setState({
         angry:
-          "You seem pretty angry today. Maybe try mediattion or listening to calming music."
+          "You seem pretty angry today. Maybe try meditation or listening to calming music."
       });
     }
     else if (angry>25) {
@@ -137,7 +137,7 @@ class ViewJournal extends Component {
     else if (stress>50) {
       this.setState({
         stress:
-          "You seem very stressed today. Maybe try mediattion."
+          "You seem very stressed today. Maybe try meditation."
       });
     }
     else if (stress>25) {

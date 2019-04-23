@@ -42,10 +42,11 @@ class PastJournals extends Component {
     return (
       <div>
         <Navbar />
-        <div className="page">
+        <div className="page" style={{ marginTop: "5em", marginBottom: "7em" }}>
           <h1 className="past-header">Your Past Journals</h1>
-          <div className="scroll">
-            {journals.map(function(journal, jid) {
+
+          <div className="">
+            {journals.reverse().map(function(journal, jid) {
               return (
                 <div className="past-journal" key={jid}>
                   <a href={"/journal/" + journal.shortId}>
@@ -55,7 +56,7 @@ class PastJournals extends Component {
                       {Utility.parseDate(journal.createdAt).year}
                     </div>
                     <br />
-                    <div>Journal: {journal.journalText}</div>
+                    <div>Journal: {journal.journalText.substr(0, 100)}</div>
                   </a>
                 </div>
               );
