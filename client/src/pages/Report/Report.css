@@ -59,7 +59,8 @@
     margin-top: 90px;
     /* border: 2px solid #fbd558; */
     /* background-color: #BCE1FF; */
-    /* border-radius: 3%; */
+    border-radius: 2%;
+    border: 1px solid lightgray;
     padding-top: 20px;
     margin-bottom: 100px;
     line-height: 2.5;
@@ -68,4 +69,12 @@
 
   .blue {
     color: #33A1FB;
+    text-decoration: underline #fbd558;
+  }
+
+  @media (max-width: 1200px) {
+    .row {
+      display:block;
+    }
+
   }
