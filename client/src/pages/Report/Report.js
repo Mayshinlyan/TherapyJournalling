@@ -22,6 +22,18 @@ class Report extends Component {
       angryY: [],
       stressedY: [],
       sleepY: [],
+      happyMax: 0,
+      happyMin: 0,
+      angryMax: 0,
+      angryMin: 0,
+      stressMax: 0,
+      stressMin: 0,
+      sleepMax: 0,
+      sleepMin: 0,
+      happyAvg: 0,
+      angryAvg: 0,
+      stressAvg: 0,
+      sleepAvg: 0,
       aggregatedJournals: "",
       wordRotate: null,
       fontSizeMapper: null,
@@ -37,7 +49,7 @@ class Report extends Component {
       nap: [],
       coffee: [],
       sun: [],
-      computer: []
+      computer: [],
     };
   }
 
@@ -62,6 +74,10 @@ class Report extends Component {
       coffee = [],
       sun = [],
       computer = [];
+    var happyMax = 0, happyMin = 0, angryMax = 0, angryMin = 0,
+      stressMax = 0, stressMin = 0, sleepMax = 0, sleepMin = 0;
+    var happyAvg = 0, angryAvg = 0, stressAvg = 0, sleepAvg = 0;
+      
 
     //get journal data
     axios
@@ -92,6 +108,20 @@ class Report extends Component {
 
           aggregatedJournals += " " + newJournals[i].journalText;
         }
+        happyMax = Math.max(...happyY);
+        happyMin = Math.min(...happyY);
+        angryMax = Math.max(...angryY);
+        angryMin = Math.min(...angryY);
+        stressMax = Math.max(...stressedY);
+        stressMin = Math.min(...stressedY);
+        sleepMax = Math.max(...sleepY);
+        sleepMin = Math.min(...sleepY);
+
+        const avg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+        happyAvg = Math.round(avg(happyY));
+        angryAvg = Math.round(avg(angryY));
+        stressAvg = Math.round(avg(stressedY));
+        sleepAvg = Math.round(avg(sleepY));
 
         // this block got from https://stackoverflow.com/a/26877411/1883640
         var words = aggregatedJournals.split(" ");
@@ -125,7 +155,20 @@ class Report extends Component {
 
           fontSizeMapper: fontSizeMapper,
           wordRotate: rotate,
-          wordFreq: [...freqMap]
+          wordFreq: [...freqMap],
+
+          happyMax, 
+          happyMin, 
+          angryMax, 
+          angryMin,
+          stressMax, 
+          stressMin, 
+          sleepMax, 
+          sleepMin,
+          happyAvg,
+          angryAvg,
+          stressAvg,
+          sleepAvg,
         });
 
         this.trends();
@@ -172,7 +215,7 @@ class Report extends Component {
     if (Math.abs(stress_exercise) > 0.5) {
       this.setState({
         stress_exercise:
-          "Your stress is correlated with when you exercise. Next time when you are filling stressed consider doing a work out!"
+          "Your stress is correlated with when you exercise. Next time when you are feeling stressed consider doing a work out!"
       });
     }
     if (Math.abs(stress_sleep) > 0.5) {
@@ -187,7 +230,6 @@ class Report extends Component {
           "Your stress is correlated with when you go outdoors. When you are having a stressful day try getting out more!"
       });
     }
-    console.log(this.state.happy_exercise);
   }
 
   render() {
@@ -196,6 +238,7 @@ class Report extends Component {
         <Navbar />
         <div className="container">
           <h1>Report</h1>
+
           <ul className="reportNav">
             <li>
               <a href="#plot"> Graphs </a>
@@ -208,29 +251,45 @@ class Report extends Component {
             </li>
           </ul>
           <h2 id="plot">Moods Over Time</h2>
-          <div className="plot-container">
-            <Plot
-              data={[
-                {
-                  x: this.state.happyX,
-                  y: this.state.happyY,
-                  hoverlabel: { bgcolor: "white" },
-                  type: "scatter",
-                  mode: "lines+markers",
-                  marker: { color: "#FBD558", symbol: "diamond" },
-                  line: { color: "#33A1FB" }
-                }
-              ]}
-              layout={{
-                width: 600,
-                height: 400,
-                title: "Happiness",
-                xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Happiness Measure" }, range: [0, 100] }
-              }}
-            />
-          </div>
-          <div className="plot-container">
+          <div className="row">
+            <div className="col-lg-6">
+              <Plot
+                data={[
+                  {
+                    x: this.state.happyX,
+                    y: this.state.happyY,
+                    hoverlabel: { bgcolor: "white" },
+                    type: "scatter",
+                    mode: "lines+markers",
+                    marker: { color: "#FBD558", symbol: "diamond" },
+                    line: { color: "#33A1FB" }
+                  }
+                ]}
+                layout={{
+                  width: 600,
+                  height: 400,
+                  title: "Happiness",
+                  xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
+                  yaxis: { title: { text: "Happiness Measure" }, range: [0, 100] }
+                }}
+              />
+            </div>
+            <div className="col-lg-6 graph-comment">
+                <div>This is your self-reported <span className="blue">happiness</span> measure, graphed over time.</div>
+                <div>Your <span className="blue">maximum</span> reported happiness level is <span className="blue">{this.state.happyMax}</span>.</div>
+                <div>Your <span className="blue">minimum</span> reported happiness level is <span className="blue">{this.state.happyMin}</span>.</div>
+                <div>Your happiness average is <span className="blue">{this.state.happyAvg}</span>.</div>
+            </div>
+          </div>{/* row */}
+          
+          <div className="row">
+            <div className="col-lg-6 graph-comment">
+                <div>This is your self-reported <span className="blue">anger</span> measure, graphed over time.</div>
+                <div>Your <span className="blue">maximum</span> reported anger level is <span className="blue">{this.state.angryMax}</span>.</div>
+                <div>Your <span className="blue">minimum</span> reported anger level is <span className="blue">{this.state.angryMin}</span>.</div>
+                <div>Your anger average is <span className="blue">{this.state.angryAvg}</span>.</div>
+            </div>
+            <div className="col-lg-6">
             <Plot
               data={[
                 {
@@ -251,53 +310,75 @@ class Report extends Component {
                 yaxis: { title: { text: "Anger Measure" }, range: [0, 100] }
               }}
             />
-          </div>
-          <div className="plot-container">
-            <Plot
-              data={[
-                {
-                  x: this.state.stressedX,
-                  y: this.state.stressedY,
-                  hoverlabel: { bgcolor: "white" },
-                  type: "scatter",
-                  mode: "lines+markers",
-                  marker: { color: "#FBD558", symbol: "diamond" },
-                  line: { color: "#33A1FB" }
-                }
-              ]}
-              layout={{
-                width: 600,
-                height: 400,
-                title: "Stress",
-                xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Stress Measure" }, range: [0, 100] }
-              }}
-            />
-          </div>
-          <div className="plot-container">
-            <Plot
-              data={[
-                {
-                  x: this.state.sleepX,
-                  y: this.state.sleepY,
-                  hoverlabel: { bgcolor: "white" },
-                  type: "scatter",
-                  mode: "lines+markers",
-                  marker: { color: "#FBD558", symbol: "diamond" },
-                  line: { color: "#33A1FB" }
-                }
-              ]}
-              layout={{
-                width: 600,
-                height: 400,
-                title: "Sleep",
-                xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
-                yaxis: { title: { text: "Sleep Quality" }, range: [0, 100] }
-              }}
-            />
-          </div>
+            </div>
+
+          </div>{/* row */}
+          
+          <div className="row">
+            <div className="col-lg-6">
+              <Plot
+                data={[
+                  {
+                    x: this.state.stressedX,
+                    y: this.state.stressedY,
+                    hoverlabel: { bgcolor: "white" },
+                    type: "scatter",
+                    mode: "lines+markers",
+                    marker: { color: "#FBD558", symbol: "diamond" },
+                    line: { color: "#33A1FB" }
+                  }
+                ]}
+                layout={{
+                  width: 600,
+                  height: 400,
+                  title: "Stress",
+                  xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
+                  yaxis: { title: { text: "Stress Measure" }, range: [0, 100] }
+                }}
+              />
+              </div>
+              <div className="col-lg-6 graph-comment">
+                <div>This is your self-reported <span className="blue">stress</span> measure, graphed over time.</div>
+                <div>Your <span className="blue">maximum</span> reported stress level is {this.state.stressMax}.</div>
+                <div>Your <span className="blue">minimum</span> reported stress level is {this.state.stressMin}.</div>
+                <div>Your stress average is <span className="blue">{this.state.stressAvg}</span>.</div>
+              </div>
+            </div>{/* row */}
+          <div className="row">
+            <div className="col-lg-6 graph-comment">
+                <div>This is your self-reported <span className="blue">sleep</span> measure, graphed over time.</div>
+                <div>Your <span className="blue">maximum</span> reported sleep value is <span className="blue"></span>{this.state.sleepMax}.</div>
+                <div>Your <span className="blue">minimum</span> reported sleep value is <span className="blue"></span>{this.state.sleepMin}.</div>
+                <div>Your sleep average is <span className="blue">{this.state.sleepAvg}</span>.</div>
+
+            </div>
+            <div className="col-lg-6">
+              <Plot
+                data={[
+                  {
+                    x: this.state.sleepX,
+                    y: this.state.sleepY,
+                    hoverlabel: { bgcolor: "white" },
+                    type: "scatter",
+                    mode: "lines+markers",
+                    marker: { color: "#FBD558", symbol: "diamond" },
+                    line: { color: "#33A1FB" }
+                  }
+                ]}
+                layout={{
+                  width: 600,
+                  height: 400,
+                  title: "Sleep",
+                  xaxis: { showgrid: false, title: { text: "Journal Entry #" } },
+                  yaxis: { title: { text: "Sleep Quality" }, range: [0, 100] }
+                }}
+              />
+              </div>
+          </div>{/* row */}
         </div>
         {/* container */}
+
+  
         <div className = "correlations">
                 <h2 id = "cor" >Correlations on activites and moods</h2>
                 

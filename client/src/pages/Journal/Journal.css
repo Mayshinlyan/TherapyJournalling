@@ -134,3 +134,27 @@ textarea {
 .poorly {
   margin-right: 13px;
 }
+
+@media (max-width: 1200px) {
+  .end {
+    margin-left: -350px;
+  }
+}
+
+@media (max-width: 995px) {
+  .end {
+    margin-left: -250px;
+  }
+}
+
+@media (max-width: 770px) {
+  .end {
+    margin-left: -170px;
+  }
+}
+
+@media (max-width: 500px) {
+  .end {
+    margin-left: -120px;
+  }
+}

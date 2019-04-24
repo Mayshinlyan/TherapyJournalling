@@ -1,8 +1,8 @@
 .resources {
-    border: 3px solid;
-    border-color: lightgrey;
+    border: 1px solid lightgray;
     border-radius: 2%;
     padding:10px;
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
   }
 
   .about-p {

@@ -41,7 +41,6 @@ userController.createNewUser = (req, res) => {
             console.log(error)
 
                 if (error.errors.username) {
-                    console.log("heloooooooooo")
                     return res.status(500).json({
                         message: error.errors.username.message
                     });
