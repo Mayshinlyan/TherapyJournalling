@@ -28,6 +28,12 @@ class ViewJournal extends Component {
         "Your stress level is good",
       sleep:
         "Your sleep level is good",
+      tsadness: null,
+      tjoy: null,
+      tfear:  null,
+      tdisgust: null,
+      tanger: null,
+      tsentiment: null 
     };
   }
 
@@ -44,8 +50,15 @@ class ViewJournal extends Component {
           angrynum: response.data.angriness,
           stressnum: response.data.stressValue,
           sleepnum: response.data.sleepValue,
-          _jtext: response.data.journalText
+          _jtext: response.data.journalText,
+          tsadness: response.data.tsadness,
+          tjoy: response.data.tjoy,
+          tfear:  response.data.tfear,
+          tdisgust: response.data.tdisgust,
+          tanger: response.data.tanger,
+          tsentiment: response.data.tsentiment
         });
+
         this.happy();
         this.angry();
         this.stress();
