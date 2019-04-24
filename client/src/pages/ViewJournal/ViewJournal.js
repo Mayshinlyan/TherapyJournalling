@@ -16,6 +16,10 @@ class ViewJournal extends Component {
       angrynum: null,
       stressnum: null,
       sleepnum: null,
+      possum: null,
+      negsum: null,
+      sum: null,
+      _jtext: '',
       happy:
         "Your happiness level is good",
       angry:
@@ -39,17 +43,20 @@ class ViewJournal extends Component {
           happynum: response.data.happiness,
           angrynum: response.data.angriness,
           stressnum: response.data.stressValue,
-          sleepnum: response.data.sleepValue
+          sleepnum: response.data.sleepValue,
+          _jtext: response.data.journalText
         });
         this.happy();
         this.angry();
         this.stress();
         this.sleep();
+        this.wordValue();
       })
       .catch(error => {
         console.log(error);
         this.setState({ success: false, response: "View Form Failed" });
       });
+      
   }
 
   /**
@@ -163,6 +170,34 @@ class ViewJournal extends Component {
     }
   }
 
+    wordValue() {
+    // const { _jtext}  = this.state._jtext;
+    // console.log(_jtext);
+    var afinn = require('afinn-165');
+    var words = this.state._jtext.split(" ");
+    console.log(words);
+    var i;
+    var sum = 0;
+    var negsum = 0;
+    var possum = 0;
+    for (i = 0; i < words.length; i++){
+        if (afinn[words[i]] !== undefined) {
+          sum += afinn[words[i]];
+        }
+        if (afinn[words[i]]>0){
+              possum++;
+        }
+        if (afinn[words[i]]<0) {
+            negsum++;
+        }
+    }
+    this.setState({
+      possum: possum,
+      negsum: negsum,
+      sum: sum
+    });
+  }
+
 
   render() {
     if (this.state.journal && this.state.journal !== "deleted") {
@@ -208,6 +243,18 @@ class ViewJournal extends Component {
                   <li>
                   <h3>Sleep</h3>
                   <p> {this.state.sleep}</p>
+                  </li>
+              </div>
+              <div className="sliders">
+                  <li>
+                  <h3>Positive Words</h3>
+                  <p> You used {this.state.possum} positive words in this journal entry.</p>
+                  </li>
+              </div>
+              <div className="sliders">
+                  <li>
+                  <h3>Negative Words</h3>
+                  <p> You used {this.state.negsum} negative words in this journal entry.</p>
                   </li>
               </div>
             </div>
