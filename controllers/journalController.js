@@ -145,7 +145,6 @@ journalController.submitJournal = (req, res) => {
 
 journalController.getAllUserJournals = (req, res) => {
   const { username } = req.body;
-  console.log(username);
   models.Journal.find(
     {
       username: username
