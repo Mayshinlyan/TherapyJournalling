@@ -8,7 +8,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div class="wrapper">
         <Navbar />
         <div className="home" style={{ marginTop: "3em" }}>
           <div className="title">Welcome</div>

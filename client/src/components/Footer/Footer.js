@@ -7,7 +7,7 @@ class Footer extends Component {
     return (
       <footer id="myFooter">
         <div className="footer-copyright">
-            <p className="">© Copyright TherapyJournal</p>
+            <p className="">© Copyright Journaly</p>
         </div>
     </footer>
     );

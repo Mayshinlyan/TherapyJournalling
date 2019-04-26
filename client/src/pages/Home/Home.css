@@ -1,7 +1,13 @@
+.wrapper {
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+}
 .home {
   background-image: url(../../images/Welcome_Page.png);
-  height: 500px;
-  background-repeat: repeat;
+  height: 80%;
   background-color: #fbd558;
 }
 .title {
@@ -14,9 +20,8 @@
   text-shadow: 2px 2px #33e1ff;
   font-size: 80px;
   font-style: bold;
-  font-family: cursive;
+  font-family: Roboto, sans-serif;
 }
-
 .container {
   padding: 5em;
 }
