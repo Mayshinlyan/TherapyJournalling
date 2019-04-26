@@ -1,9 +1,12 @@
 .sliders {
     margin-top: auto;
-    background: #fbd558;
+    border-color: #fbd558;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 12px;
     min-width: 350px;
     margin: 10px;
-    padding: 20px;
+    padding: 3%;
     padding-bottom: 30px;
     color: black;
     overflow-y: auto;
@@ -12,3 +15,41 @@
   li{
     list-style-type:none;
   }
+
+  .journal {
+    padding: 3%;
+    border-color: #fbd558;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 12px;
+    margin: 10px;
+  }
+
+   progress[value] {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+     appearance: none;
+  
+    width: 250px;
+    height: 20px;
+  }
+
+  progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+
+  progress[value]::-webkit-progress-value {
+    background-image:
+       -webkit-linear-gradient(top, 
+                               rgba(255, 255, 255, .25), 
+                               rgba(0, 0, 0, .25)),
+       -webkit-linear-gradient(left,#facc33,  rgb(102, 217, 255));
+  
+      border-radius: 2px; 
+      background-size: 35px 20px, 100% 100%, 100% 100%;
+  }
+li {
+  display:inline-block;
+}

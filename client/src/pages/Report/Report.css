@@ -12,69 +12,65 @@
     margin: 0 auto;
 }
 
-
 .reportNav, .cor {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
   
-  .reportNav li {
-    float: left;
-    margin:10px;
-    background-color: #fbd558;
-    border-radius: 5%;
-  }
+.reportNav li {
+  float: left;
+  margin:10px;
+  background-color: #fbd558;
+  border-radius: 5%;
+}
   
-  .reportNav li a {
-    display: block;
-    color: #666;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
+.reportNav li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
   
-  .reportNav li a:hover:not(.active) {
-    background-color: #ddd;
-  }
+.reportNav li a:hover:not(.active) {
+  background-color: #ddd;
+}
   
-  .reportNav li a.active {
-    color: white;
-    background-color: #4CAF50;
-  }
+.reportNav li a.active {
+  color: white;
+  background-color: #4CAF50;
+}
 
-  .cor li{
-    margin:10px;
-    background-color: #fbd558;
-    border-radius: 2%;
-    padding:10px;
-  }
+.cor li{
+  margin:10px;
+  background-color: #fbd558;
+  border-radius: 2%;
+  padding:10px;
+}
 
-  .no-data {
-    margin-bottom: 25px;
-  }
+.no-data {
+  margin-bottom: 25px;
+}
 
-  .graph-comment {
-    margin-top: 90px;
-    /* border: 2px solid #fbd558; */
-    /* background-color: #BCE1FF; */
-    border-radius: 2%;
-    border: 1px solid lightgray;
-    padding-top: 20px;
-    margin-bottom: 100px;
-    line-height: 2.5;
-    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
-  }
+.graph-comment {
+  margin-top: 90px;
+  border-radius: 2%;
+  border: 1px solid lightgray;
+  padding-top: 20px;
+  margin-bottom: 100px;
+  line-height: 2.5;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+}
 
-  .blue {
-    color: #33A1FB;
-    text-decoration: underline #fbd558;
-  }
+.blue {
+  color: #33A1FB;
+  text-decoration: underline #fbd558;
+}
 
-  @media (max-width: 1200px) {
-    .row {
-      display:block;
-    }
-
+@media (max-width: 1200px) {
+  .row {
+    display:block;
   }
+}

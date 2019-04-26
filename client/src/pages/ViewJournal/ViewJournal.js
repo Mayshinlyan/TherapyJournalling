@@ -3,6 +3,11 @@ import "./ViewJournal.css";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import Utility from "../../Utility";
+import runicon1 from "../../images/runicon1.png";
+import coffeeicon1 from "../../images/coffeeicon1.png";
+import computericon1 from "../../images/computericon1.png";
+import sleepicon1 from "../../images/sleepicon1.png";
+import sunicon1 from "../../images/sunicon1.png";
 
 class ViewJournal extends Component {
   constructor(props) {
@@ -16,14 +21,24 @@ class ViewJournal extends Component {
       angrynum: null,
       stressnum: null,
       sleepnum: null,
+      possum: null,
+      negsum: null,
+      sum: null,
+      _jtext: '',
       happy:
-        "Your happiness level is good",
+        "You seem pretty happy.",
       angry:
-        "Your angriness level is good",
+        "You aren't too angry.",
       stress:
-        "Your stress level is good",
+        "You don't seem very stressed.",
       sleep:
-        "Your sleep level is good",
+        "You seem like you slept pretty well.",
+      tsadness: null,
+      tjoy: null,
+      tfear:  null,
+      tdisgust: null,
+      tanger: null,
+      tsentiment: null 
     };
   }
 
@@ -39,17 +54,27 @@ class ViewJournal extends Component {
           happynum: response.data.happiness,
           angrynum: response.data.angriness,
           stressnum: response.data.stressValue,
-          sleepnum: response.data.sleepValue
+          sleepnum: response.data.sleepValue,
+          _jtext: response.data.journalText,
+          tsadness: response.data.tsadness,
+          tjoy: response.data.tjoy,
+          tfear:  response.data.tfear,
+          tdisgust: response.data.tdisgust,
+          tanger: response.data.tanger,
+          tsentiment: response.data.tsentiment
         });
+
         this.happy();
         this.angry();
         this.stress();
         this.sleep();
+        this.wordValue();
       })
       .catch(error => {
         console.log(error);
         this.setState({ success: false, response: "View Form Failed" });
       });
+      
   }
 
   /**
@@ -112,7 +137,7 @@ class ViewJournal extends Component {
     else if (angry>25) {
       this.setState({
         angry:
-          "You dont seem too angry today."
+          "You dont seem too angry."
       });
     }
   }
@@ -123,7 +148,7 @@ class ViewJournal extends Component {
     if (stress>75) {
       this.setState({
         stress:
-          "You seem very stressed today. Maybe try meditation. You can also try checking out these resources: https://www.adaa.org/netforum/findatherapist"
+          "You seem very stressed today. Maybe try meditation. You can also try checking out these resources: https://www.adaa.org/netforum/findatherapist."
       });
     }
     else if (stress>50) {
@@ -135,7 +160,7 @@ class ViewJournal extends Component {
     else if (stress>25) {
       this.setState({
         stress:
-          "You dont seem too stressed today."
+          "You don't seem too stressed."
       });
     }
   }
@@ -146,7 +171,7 @@ class ViewJournal extends Component {
     if (sleep<25) {
       this.setState({
         sleep:
-          "You didn't sleep very well today. Try turning off all screens 1 hour before bed or meditation. You can also try checking out these resourses: https://www.sleepassociation.org/"
+          "You didn't sleep very well today. Try turning off all screens 1 hour before bed or meditation. You can also try checking out these resourses: https://www.sleepassociation.org/."
       });
     }
     else if (sleep<50) {
@@ -158,9 +183,37 @@ class ViewJournal extends Component {
     else if (sleep<75) {
       this.setState({
         sleep:
-          "Your sleep seems okay today."
+          "Your sleep seems okay."
       });
     }
+  }
+
+    wordValue() {
+    // const { _jtext}  = this.state._jtext;
+    // console.log(_jtext);
+    var afinn = require('afinn-165');
+    var words = this.state._jtext.split(" ");
+    console.log(words);
+    var i;
+    var sum = 0;
+    var negsum = 0;
+    var possum = 0;
+    for (i = 0; i < words.length; i++){
+        if (afinn[words[i]] !== undefined) {
+          sum += afinn[words[i]];
+        }
+        if (afinn[words[i]]>0){
+              possum++;
+        }
+        if (afinn[words[i]]<0) {
+            negsum++;
+        }
+    }
+    this.setState({
+      possum: possum,
+      negsum: negsum,
+      sum: sum
+    });
   }
 
 
@@ -176,13 +229,16 @@ class ViewJournal extends Component {
             <div className="">
               <h1>{journal.username}'s Journal</h1>
               <br/>
+
+              <div className="journal">
               <p className="">
                 {Utility.parseDate(journal.createdAt).month}/
                 {Utility.parseDate(journal.createdAt).date}/
                 {Utility.parseDate(journal.createdAt).year}
               </p>
-              
               <p>{journal.journalText}</p>
+              </div>
+              <br/>
 
               <h2>Feedback:</h2>
 
@@ -190,27 +246,80 @@ class ViewJournal extends Component {
                 <li>
                 <h3>Happiness</h3>
                 <p> {this.state.happy}</p>
+                <p className="styled"><progress max="100" value={journal.happiness}></progress></p>
                 </li>
               </div>
               <div className="sliders">
                   <li>
                   <h3>Angriness</h3>
                   <p> {this.state.angry}</p>
+                  <p className="styled"><progress max="100" value={journal.angriness}></progress></p>
                   </li>
               </div>
               <div className="sliders">
                   <li>
                   <h3>Stress</h3>
                   <p> {this.state.stress}</p>
+                  <p className="styled"><progress max="100" value={journal.stressValue}></progress></p>
                   </li>
               </div>
               <div className="sliders">
                   <li>
                   <h3>Sleep</h3>
                   <p> {this.state.sleep}</p>
+                  <p className="styled"><progress max="100" value={journal.sleepValue}></progress></p>
                   </li>
               </div>
+              <div className="sliders">
+                  <li>
+                  <h3>Sentiment</h3>
+                  <p>We have calculated the overal sentiment of you're journal entry. This accounts for positivity and negativity in your journal. The farther along your bar is, the more positive you were!</p>
+                  <p className="styled"><progress max="2" value={journal.tsentiment+1}></progress></p>
+                  </li>
+              </div>
+
+              
             </div>
+            <div className="sliders">
+            <li>
+            <h3>Activities</h3>
+            
+
+                  {journal.coffee.toString() === 'false' && journal.exercise.toString() === 'false' && journal.nap.toString() === 'false' && journal.coffee.toString() === 'false' && journal.computer.toString() == 'false' && journal.sun.toString() === 'false' ? 
+
+                  <p>You did no activities this day.</p>:
+                  
+                  <ul>
+                    {journal.exercise.toString() === 'true' &&
+                    <li>
+                    <img src={runicon1} alt="Run"/>
+                    </li>
+                    }
+                    {journal.nap.toString() === 'true' &&
+                    <li>
+                    <img src={sleepicon1} alt="Sleep"/>
+                    </li>
+                    }
+                    {journal.coffee.toString() === 'true' &&
+                    <li>
+                    <img src={coffeeicon1} alt="Coffee"/>
+                    </li>
+                    }
+                    {journal.computer.toString() === 'true' &&
+                    <li>
+                    <img src={computericon1} alt="Computer"/>
+                    </li>
+                    }
+                    {journal.sun.toString() === 'true' &&
+                    <li>
+                    <img src={sunicon1} alt="Sun"/>
+                    </li>
+                    }
+                  </ul>
+                  
+                  }  
+                  </li>
+              </div>
 
             
 

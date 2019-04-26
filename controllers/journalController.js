@@ -16,7 +16,13 @@ journalController.submitJournal = (req, res) => {
     nap,
     coffee,
     sun,
-    computer
+    computer,
+    tsadness,
+    tjoy,
+    tfear,
+    tdisgust,
+    tanger,
+    tsentiment
   } = req.body;
 
   let shortId = ids.generate();
@@ -35,20 +41,6 @@ journalController.submitJournal = (req, res) => {
     "url": 'https://gateway.watsonplatform.net/tone-analyzer/api/'
   });
 
-  // toneAnalyzer.tone(
-  //   {
-  //     tone_input: 'One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.',
-  //     content_type: 'text/plain'
-  //   },
-  //   function(err, tone) {
-  //     if (err) {
-  //       console.log(err);
-  //     } else {
-  //       console.log('tone endpoint:');
-  //       console.log(JSON.stringify(tone, null, 2));
-  //     }
-  //   }
-  // );
   var nlu = new NaturalLanguageUnderstandingV1({
     version: '2018-04-05',
     url: 'https://gateway.watsonplatform.net/natural-language-understanding/api/'
@@ -59,7 +51,7 @@ journalController.submitJournal = (req, res) => {
     features: {
       'sentiment': {},
       'emotion': {
-      'document': true
+        'document': true
       }
     }
   };
@@ -145,7 +137,6 @@ journalController.submitJournal = (req, res) => {
 
 journalController.getAllUserJournals = (req, res) => {
   const { username } = req.body;
-  console.log(username);
   models.Journal.find(
     {
       username: username
