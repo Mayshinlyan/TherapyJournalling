@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./Profile.css";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 class Profile extends Component {
   constructor(props) {
@@ -157,6 +158,7 @@ class Profile extends Component {
           {/* end of collapse */}
         </div>{" "}
         {/* end of profile */}
+        <Footer />
       </div>
     );
   }

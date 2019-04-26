@@ -8,6 +8,7 @@ import coffeeicon1 from "../../images/coffeeicon1.png";
 import computericon1 from "../../images/computericon1.png";
 import sleepicon1 from "../../images/sleepicon1.png";
 import sunicon1 from "../../images/sunicon1.png";
+import Footer from "../../components/Footer/Footer";
 
 class ViewJournal extends Component {
   constructor(props) {
@@ -342,6 +343,7 @@ class ViewJournal extends Component {
             
 
           </div>
+          <Footer />
         </div>
       );
     } else {
