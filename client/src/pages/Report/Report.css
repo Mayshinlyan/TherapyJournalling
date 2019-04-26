@@ -69,6 +69,10 @@
   text-decoration: underline #fbd558;
 }
 
+.wordCloud {
+  margin-bottom: 50px;
+}
+
 @media (max-width: 1200px) {
   .row {
     display:block;
